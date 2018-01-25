@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 13:00:46 by qdequele          #+#    #+#             */
-/*   Updated: 2018/01/25 14:44:51 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/01/25 15:29:39 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,18 @@ void	find_arch(t_list *node)
 
 	file = (t_file *)(node->content);
 	magic_number = *(unsigned int *) file->ptr;
-	if (magic_number == MH_MAGIC_64)
-	{
-		archi = create_archi("64Bits", file->ptr);
-		search_lc_64((t_archi *)(archi->content));
-	}
-	else if (magic_number == MH_MAGIC)
-	{
-		archi = create_archi("32Bits", file->ptr);
-		search_lc_32((t_archi *)(archi->content));
-	} else {
+	if (magic_number == MH_MAGIC_64 || magic_number == MH_CIGAM_64)
+		search_lc_64((t_archi *)((archi = create_archi("64Bits", file->ptr))->content));
+	else if (magic_number == MH_MAGIC || magic_number == MH_CIGAM)
+		search_lc_32((t_archi *)((archi = create_archi("32Bits", file->ptr))->content));
+	else if (magic_number == FAT_MAGIC || magic_number == FAT_CIGAM)
+		archi = create_archi("FAT32", file->ptr);
+	else if (magic_number == FAT_MAGIC_64 || magic_number == FAT_CIGAM_64)
+		archi = create_archi("FAT64", file->ptr);
+	else if (ft_strncmp((char *)file->ptr, ARMAG, SARMAG) == 0)
+		archi = create_archi("ARCH", file->ptr);
+	else
 		archi = create_archi("UNDEFINED", file->ptr);
-	}
 	ft_lstaddend(&(file->archi_list), archi);
 }
 

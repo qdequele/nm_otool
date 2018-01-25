@@ -6,24 +6,24 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 14:36:29 by qdequele          #+#    #+#             */
-/*   Updated: 2018/01/25 14:34:42 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/01/25 15:31:57 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_NM_H
 # define FT_NM_H
 
-// [file1] - [file2]
-// |
-// [32] - [64] - [ppc]
-// |
-// [0000000100000000 T __mh_execute_header] - [0000000100000000 T __mh_execute_header]
-
 # include <libft.h>
 # include <stdio.h>
 # include <sys/mman.h>
 # include <mach-o/loader.h>
 # include <mach-o/nlist.h>
+# include <mach-o/fat.h>
+# include <mach-o/ranlib.h>
+# include <mach-o/dyld.h>
+# include <mach-o/stab.h>
+# include <mach/machine.h>
+# include <ar.h>
 # include <fcntl.h>
 # include <sys/stat.h>
 # include <stdlib.h>
@@ -85,6 +85,7 @@ t_env			*g_env;
 
 void			create_env();
 void			env_description();
+
 /*
 **	LOAD COMMAND
 */
