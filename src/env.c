@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nm.c                                            :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/24 14:38:24 by qdequele          #+#    #+#             */
-/*   Updated: 2018/01/25 13:35:26 by qdequele         ###   ########.fr       */
+/*   Created: 2018/01/25 13:07:52 by qdequele          #+#    #+#             */
+/*   Updated: 2018/01/25 13:11:07 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_nm.h"
 
-
-int		main(int ac, char ** av)
+void		create_env()
 {
-	int		i;
-	if (ac != 2)
+	t_env	*env;
+
+	if ((env = (t_env *)malloc(sizeof(t_env))) == NULL)
 	{
-		fprintf(stderr, "Please give me an arg\n");
-		return (EXIT_FAILURE);
+		g_env = NULL;
+		return ;
 	}
-	create_env();
-	if (g_env == NULL)
-	{
-		perror("malloc g_env");
-		exit(EXIT_FAILURE);
-	}
-	i = 0;
-	while (++i < ac)
-		read_file(av[i]);
-	ft_lstiter(g_env->file_list, find_arch);
-	return (0);
+	env->nb_files = 0;
+	env->file_list = NULL;
+	g_env = env;
 }

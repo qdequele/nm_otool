@@ -6,15 +6,22 @@
 #    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/24 14:29:39 by qdequele          #+#    #+#              #
-#    Updated: 2018/01/24 17:02:16 by qdequele         ###   ########.fr        #
+#    Updated: 2018/01/25 13:39:45 by qdequele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Define the program
 NAME		=	ft_nm
 
-_SRC		=	ft_nm.c
-_INC		=	malloc.h
+_SRC		=	archi.c \
+				env.c \
+				file.c \
+				ft_nm.c \
+				lc_32.c \
+				lc_64.c \
+				symbol.c
+
+_INC		=	ft_nm.h
 
 SRC			=	$(addprefix src/,$(_SRC))
 INC			=	$(addprefix include/,$(_INC))
