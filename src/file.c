@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 11:50:53 by qdequele          #+#    #+#             */
-/*   Updated: 2018/01/25 13:28:44 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/01/25 14:44:37 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,16 @@ void	read_file(char *filename)
 		perror("mmap");
 		exit(EXIT_FAILURE);
 	}
-	ft_lstaddend(&(g_env->file_list), create_file(filename, filename, ptr));
+	ft_lstaddend(&(g_env->file_list), create_file(ft_strdup(filename), ft_strdup(filename), ptr));
 	g_env->nb_files += 1;
+}
+
+void	file_description(t_list *node)
+{
+	t_file		*file;
+
+	file = (t_file *)node->content;
+	ft_putstr("file: ");
+	ft_putendl(file->name);
+	ft_lstiter(file->archi_list, archi_description);
 }

@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 13:07:52 by qdequele          #+#    #+#             */
-/*   Updated: 2018/01/25 13:11:07 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/01/25 14:01:46 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,10 @@ void		create_env()
 	env->nb_files = 0;
 	env->file_list = NULL;
 	g_env = env;
+}
+
+
+void		env_description()
+{
+	ft_lstiter(g_env->file_list, file_description);
 }
