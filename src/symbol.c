@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 11:35:21 by qdequele          #+#    #+#             */
-/*   Updated: 2018/01/25 14:53:16 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/01/26 15:50:47 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,70 @@ t_list	*create_sym(char *addr, char *type, char *name)
 	return (lst);
 }
 
-char	*symbol_type(uint8_t type)
+char	*symbol_type_64(uint8_t type, uint8_t sect, t_archi *archi)
 {
-	if (type == 15)
+	char		*ret;
+	t_section	*sec;
+
+	if ((type & N_TYPE) == N_UNDF)
+		ret = "U";
+	else if ((type & N_TYPE) == N_ABS)
+		ret = "A";
+	else if ((type & N_TYPE) == N_SECT)
 	{
-		return "T";
+		sec = (t_section *)(ft_lstget_at(archi->sec_list, (int)sect - 1)->content);
+		if (ft_strcmp(sec->sec_name, SECT_TEXT) == 0)
+			ret = "T";
+		else if (ft_strcmp(sec->sec_name, SECT_DATA) == 0)
+			ret = "D";
+		else if (ft_strcmp(sec->sec_name, SECT_BSS) == 0)
+			ret = "B";
+		else
+			ret = "S";
 	}
-	if (type == 1)
+	else if ((type & N_TYPE) == N_PBUD)
+		ret = "P";
+	else if ((type & N_TYPE) == N_INDR)
+		ret = "I";
+	else
+		ret = "X";
+
+	if ((type & N_EXT) == 0 && ft_strcmp(ret, "X") != 0)
+		ret += 32;
+	return (ret);
+}
+
+char	*symbol_type_32(uint8_t type, uint8_t sect, t_archi *archi)
+{
+	char		*ret;
+	t_section	*sec;
+
+	if ((type & N_TYPE) == N_UNDF)
+		ret = "U";
+	else if ((type & N_TYPE) == N_ABS)
+		ret = "A";
+	else if ((type & N_TYPE) == N_SECT)
 	{
-		return "U";
+		sec = (t_section *)(ft_lstget_at(archi->sec_list, (int)sect - 1)->content);
+		if (ft_strcmp(sec->sec_name, SECT_TEXT) == 0)
+			ret = "T";
+		else if (ft_strcmp(sec->sec_name, SECT_DATA) == 0)
+			ret = "D";
+		else if (ft_strcmp(sec->sec_name, SECT_COMMON) == 0)
+			ret = "B";
+		else
+			ret = "S";
 	}
-	return "X";
+	else if ((type & N_TYPE) == N_PBUD)
+		ret = "P";
+	else if ((type & N_TYPE) == N_INDR)
+		ret = "I";
+	else
+		ret = "X";
+
+	if ((type & N_EXT) == 0 && ft_strcmp(ret, "X") != 0)
+		ret += 32;
+	return (ret);
 }
 
 void	symbol_description(t_list *node)

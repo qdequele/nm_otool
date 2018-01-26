@@ -6,7 +6,7 @@
 #    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/24 14:29:39 by qdequele          #+#    #+#              #
-#    Updated: 2018/01/25 13:39:45 by qdequele         ###   ########.fr        #
+#    Updated: 2018/01/26 13:19:50 by qdequele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ _SRC		=	archi.c \
 				ft_nm.c \
 				lc_32.c \
 				lc_64.c \
+				sec.c \
 				symbol.c
 
 _INC		=	ft_nm.h

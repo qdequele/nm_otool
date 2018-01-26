@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 13:00:46 by qdequele          #+#    #+#             */
-/*   Updated: 2018/01/25 15:29:39 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/01/26 15:24:25 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ t_list	*create_archi(char *type, void *ptr)
 	archi->ptr = ptr;
 	archi->nb_sym = 0;
 	archi->sym_list = NULL;
+	archi->nb_sec = 0;
+	archi->sec_list = NULL;
 	lst->content = (void *)archi;
 	lst->content_size = sizeof(archi);
 	lst->next = NULL;
@@ -62,4 +64,5 @@ void	archi_description(t_list *node)
 	ft_putstr("arch: ");
 	ft_putendl(archi->type);
 	ft_lstiter(archi->sym_list, symbol_description);
+	// ft_lstiter(archi->sec_list, section_description);
 }

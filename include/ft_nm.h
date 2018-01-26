@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 14:36:29 by qdequele          #+#    #+#             */
-/*   Updated: 2018/01/25 15:31:57 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/01/26 15:52:05 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # include <stdlib.h>
 
 /*
-**	ARCHI
+**	SYMBOLES
 */
 
 typedef struct	s_sym {
@@ -39,8 +39,21 @@ typedef struct	s_sym {
 }				t_sym;
 
 t_list			*create_sym(char *addr, char *type, char *name);
-char			*symbol_type(uint8_t type);
 void			symbol_description(t_list *node);
+
+/*
+**	SECTION
+*/
+
+typedef struct	s_section {
+	char		*seg_name;
+	char		*sec_name;
+	char		*content;
+}				t_section;
+
+t_list			*create_section(char *seg_name, char *sec_name, char *content);
+void			section_description(t_list *node);
+
 /*
 **	ARCHI
 */
@@ -50,6 +63,8 @@ typedef struct	s_archi {
 	void		*ptr;
 	int			nb_sym;
 	t_list		*sym_list;
+	int			nb_sec;
+	t_list		*sec_list;
 }				t_archi;
 
 t_list			*create_archi(char *type, void *ptr);
@@ -91,8 +106,13 @@ void			env_description();
 */
 
 void			search_lc_64(t_archi *archi);
+void			search_section_64(void *lc, t_archi *archi);
 void			search_nlist_64(void *lc, t_archi *archi);
+char			*symbol_type_64(uint8_t type, uint8_t sect, t_archi *archi);
+
 void			search_lc_32(t_archi *archi);
+void			search_section_32(void *lc, t_archi *archi);
 void			search_nlist_32(void *lc, t_archi *archi);
+char			*symbol_type_32(uint8_t type, uint8_t sect, t_archi *archi);
 
 #endif
