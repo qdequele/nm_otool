@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   symbol.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 11:35:21 by qdequele          #+#    #+#             */
-/*   Updated: 2018/01/26 15:50:47 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/01/30 16:38:49 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

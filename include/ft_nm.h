@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nm.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 14:36:29 by qdequele          #+#    #+#             */
-/*   Updated: 2018/01/26 15:52:05 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/01/30 16:43:10 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@
 # include <fcntl.h>
 # include <sys/stat.h>
 # include <stdlib.h>
+
+# define OPT_N 0b00000001 // -n : Sort numerically rather than alphabetically.
+# define OPT_O 0b00000010 // -o : Prepend file or archive element name to each output line, rather than only once.
+# define OPT_P 0b00000100 // -p : don't sort
+# define OPT_R 0b00001000 // -r : sort in reverse
+# define OPT_U 0b00010000 // -u : show only undefined symbols
+# define OPT_U_MAJ 0b00100000 // -U : don't show undefined symbols
+# define OPT_J 0b01000000 // -j : Just display the symbol names (no value or type).
 
 /*
 **	SYMBOLES
@@ -94,12 +102,15 @@ void			file_description(t_list *node);
 typedef struct	s_env {
 	int			nb_files;
 	t_list		*file_list;
+	int			options;
 }				t_env;
 
 t_env			*g_env;
 
 void			create_env();
 void			env_description();
+int				parse_options(char **entry);
+void			print_options();
 
 /*
 **	LOAD COMMAND
@@ -114,5 +125,9 @@ void			search_lc_32(t_archi *archi);
 void			search_section_32(void *lc, t_archi *archi);
 void			search_nlist_32(void *lc, t_archi *archi);
 char			*symbol_type_32(uint8_t type, uint8_t sect, t_archi *archi);
+
+/*
+**	SORT
+*/
 
 #endif

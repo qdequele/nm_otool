@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 13:07:52 by qdequele          #+#    #+#             */
-/*   Updated: 2018/01/25 14:01:46 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/01/30 16:45:08 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,59 @@ void		create_env()
 	}
 	env->nb_files = 0;
 	env->file_list = NULL;
+	env->options = 0;
 	g_env = env;
 }
 
+int			parse_options(char **entry)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (entry[++i] != NULL && entry[i][0] == '-')
+		while (entry[i][++j] != '\0')
+			if (entry[i][j] == 'n')
+				g_env->options = g_env->options | OPT_N;
+			else if (entry[i][j] == 'o')
+				g_env->options = g_env->options | OPT_O;
+			else if (entry[i][j] == 'p')
+				g_env->options = g_env->options | OPT_P;
+			else if (entry[i][j] == 'r')
+				g_env->options = g_env->options | OPT_R;
+			else if (entry[i][j] == 'u')
+				g_env->options = g_env->options | OPT_U;
+			else if (entry[i][j] == 'U')
+				g_env->options = g_env->options | OPT_U_MAJ;
+			else if (entry[i][j] == 'j')
+				g_env->options = g_env->options | OPT_J;
+			else
+				return (i);
+	return (i);
+}
+
+
+void print_options()
+{
+	printf("Options :\n");
+
+	if ((g_env->options & OPT_N) == OPT_N)
+		printf("-n\n");
+	if ((g_env->options & OPT_O) == OPT_O)
+		printf("-o\n");
+	if ((g_env->options & OPT_P) == OPT_P)
+		printf("-p\n");
+	if ((g_env->options & OPT_R) == OPT_R)
+		printf("-r\n");
+	if ((g_env->options & OPT_U) == OPT_U)
+		printf("-u\n");
+	if ((g_env->options & OPT_U_MAJ) == OPT_U_MAJ)
+		printf("-U\n");
+	if ((g_env->options & OPT_J) == OPT_J)
+		printf("-j\n");
+
+}
 
 void		env_description()
 {
