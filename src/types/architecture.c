@@ -6,7 +6,7 @@
 /*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 13:00:46 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/06 12:00:10 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/06 12:37:31 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,5 @@ void	architecture_description(t_list *node)
 	if ((g_env->options & OPT_R) == OPT_R)
 		sort_reverse(&(archi->sym_list));
 	ft_lstiter(archi->sym_list, symbol_description);
+	ft_putchar('\n');
 }
