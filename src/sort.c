@@ -6,11 +6,11 @@
 /*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 16:08:28 by quentindequ       #+#    #+#             */
-/*   Updated: 2018/01/30 16:20:33 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/06 10:18:28 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_nm.h"
+#include <ft_nm.h>
 
 int		sort_alphabetically(t_list *node)
 {
@@ -39,4 +39,5 @@ int		sort_numerically(t_list *node)
 int		sort_reverse(t_list **node)
 {
 	*node = ft_lst_reverse(*node);
+	return (1);
 }

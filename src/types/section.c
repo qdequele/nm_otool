@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sec.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 11:29:17 by qdequele          #+#    #+#             */
-/*   Updated: 2018/01/26 15:06:31 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/06 10:18:28 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_nm.h"
+#include <ft_nm.h>
 
 t_list	*create_section(char *seg_name, char *sec_name, char *content)
 {

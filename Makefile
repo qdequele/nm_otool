@@ -3,24 +3,29 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
+#    By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/24 14:29:39 by qdequele          #+#    #+#              #
-#    Updated: 2018/01/26 13:19:50 by qdequele         ###   ########.fr        #
+#    Updated: 2018/02/06 11:07:01 by quentindequ      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Define the program
 NAME		=	ft_nm
 
-_SRC		=	archi.c \
-				env.c \
-				file.c \
-				ft_nm.c \
-				lc_32.c \
-				lc_64.c \
-				sec.c \
-				symbol.c
+_SRC		=	ft_nm.c \
+				sort.c \
+				parsing/archives.c \
+				parsing/header.c \
+				parsing/load_command.c \
+				parsing/nlist.c \
+				parsing/section_command.c \
+				parsing/symbol_type.c \
+				types/architecture.c \
+				types/env.c \
+				types/file.c \
+				types/section.c \
+				types/symbol.c
 
 _INC		=	ft_nm.h
 

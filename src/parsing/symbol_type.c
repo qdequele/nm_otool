@@ -1,36 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   symbol.c                                           :+:      :+:    :+:   */
+/*   symbol_type.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/25 11:35:21 by qdequele          #+#    #+#             */
-/*   Updated: 2018/01/30 16:38:49 by quentindequ      ###   ########.fr       */
+/*   Created: 2018/02/06 10:51:36 by quentindequ       #+#    #+#             */
+/*   Updated: 2018/02/06 10:51:52 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_nm.h"
+#include <ft_nm.h>
 
-t_list	*create_sym(char *addr, char *type, char *name)
-{
-	t_sym		*sym;
-	t_list		*lst;
-
-	if ((sym = (t_sym *)malloc(sizeof(t_sym))) == NULL)
-		return (NULL);
-	if ((lst = (t_list *)malloc(sizeof(t_list))) == NULL)
-		return (NULL);
-	sym->addr = addr;
-	sym->type = type;
-	sym->name = name;
-	lst->content = (void *)sym;
-	lst->content_size = sizeof(sym);
-	lst->next = NULL;
-	return (lst);
-}
-
-char	*symbol_type_64(uint8_t type, uint8_t sect, t_archi *archi)
+char	*symbol_type_64(uint8_t type, uint8_t sect, t_architecture *archi)
 {
 	char		*ret;
 	t_section	*sec;
@@ -63,7 +45,7 @@ char	*symbol_type_64(uint8_t type, uint8_t sect, t_archi *archi)
 	return (ret);
 }
 
-char	*symbol_type_32(uint8_t type, uint8_t sect, t_archi *archi)
+char	*symbol_type_32(uint8_t type, uint8_t sect, t_architecture *archi)
 {
 	char		*ret;
 	t_section	*sec;
@@ -94,16 +76,4 @@ char	*symbol_type_32(uint8_t type, uint8_t sect, t_archi *archi)
 	if ((type & N_EXT) == 0 && ft_strcmp(ret, "X") != 0)
 		ret += 32;
 	return (ret);
-}
-
-void	symbol_description(t_list *node)
-{
-	t_sym	*sym;
-
-	sym = (t_sym *)node->content;
-	ft_putstr(sym->addr);
-	ft_putstr(" ");
-	ft_putstr(sym->type);
-	ft_putstr(" ");
-	ft_putendl(sym->name);
 }

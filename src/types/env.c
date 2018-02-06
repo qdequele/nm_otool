@@ -6,11 +6,11 @@
 /*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 13:07:52 by qdequele          #+#    #+#             */
-/*   Updated: 2018/01/30 16:45:08 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/06 10:52:36 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_nm.h"
+#include <ft_nm.h>
 
 void		create_env()
 {
@@ -27,7 +27,7 @@ void		create_env()
 	g_env = env;
 }
 
-int			parse_options(char **entry)
+int			parse_options_nm(char **entry)
 {
 	int		i;
 	int		j;
@@ -53,28 +53,6 @@ int			parse_options(char **entry)
 			else
 				return (i);
 	return (i);
-}
-
-
-void print_options()
-{
-	printf("Options :\n");
-
-	if ((g_env->options & OPT_N) == OPT_N)
-		printf("-n\n");
-	if ((g_env->options & OPT_O) == OPT_O)
-		printf("-o\n");
-	if ((g_env->options & OPT_P) == OPT_P)
-		printf("-p\n");
-	if ((g_env->options & OPT_R) == OPT_R)
-		printf("-r\n");
-	if ((g_env->options & OPT_U) == OPT_U)
-		printf("-u\n");
-	if ((g_env->options & OPT_U_MAJ) == OPT_U_MAJ)
-		printf("-U\n");
-	if ((g_env->options & OPT_J) == OPT_J)
-		printf("-j\n");
-
 }
 
 void		env_description()

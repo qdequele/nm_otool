@@ -6,7 +6,7 @@
 /*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 14:36:29 by qdequele          #+#    #+#             */
-/*   Updated: 2018/01/30 16:43:10 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/06 11:34:31 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,21 +63,20 @@ t_list			*create_section(char *seg_name, char *sec_name, char *content);
 void			section_description(t_list *node);
 
 /*
-**	ARCHI
+**	ARCHITECTURES
 */
 
-typedef struct	s_archi {
+typedef struct	s_architecture {
 	char		*type;
 	void		*ptr;
 	int			nb_sym;
 	t_list		*sym_list;
 	int			nb_sec;
 	t_list		*sec_list;
-}				t_archi;
+}				t_architecture;
 
-t_list			*create_archi(char *type, void *ptr);
-void			find_arch(t_list *node);
-void			archi_description(t_list *node);
+t_list			*create_architecture(char *type, void *ptr);
+void			architecture_description(t_list *node);
 
 /*
 **	FILE
@@ -109,25 +108,55 @@ t_env			*g_env;
 
 void			create_env();
 void			env_description();
-int				parse_options(char **entry);
+int				parse_options_nm(char **entry);
 void			print_options();
+
+/*
+**	HEADER
+*/
+
+void			find_architecture(t_list *node);
 
 /*
 **	LOAD COMMAND
 */
 
-void			search_lc_64(t_archi *archi);
-void			search_section_64(void *lc, t_archi *archi);
-void			search_nlist_64(void *lc, t_archi *archi);
-char			*symbol_type_64(uint8_t type, uint8_t sect, t_archi *archi);
+void			search_lc_32(t_architecture *archi);
+void			search_lc_64(t_architecture *archi);
 
-void			search_lc_32(t_archi *archi);
-void			search_section_32(void *lc, t_archi *archi);
-void			search_nlist_32(void *lc, t_archi *archi);
-char			*symbol_type_32(uint8_t type, uint8_t sect, t_archi *archi);
+/*
+**	NLIST
+*/
+
+void			search_nlist_32(void *lc, t_architecture *archi);
+void			search_nlist_64(void *lc, t_architecture *archi);
+
+/*
+**	SECTION COMMAND
+*/
+
+void			search_section_32(void *lc, t_architecture *archi);
+void			search_section_64(void *lc, t_architecture *archi);
+
+/*
+**	ARCHIVES
+*/
+
+t_list			*search_archives(t_file *file);
+
+/*
+**	SYMBOLES TYPES
+*/
+
+char			*symbol_type_64(uint8_t type, uint8_t sect, t_architecture *archi);
+char			*symbol_type_32(uint8_t type, uint8_t sect, t_architecture *archi);
 
 /*
 **	SORT
 */
+
+int				sort_alphabetically(t_list *node);
+int				sort_numerically(t_list *node);
+int				sort_reverse(t_list **node);
 
 #endif
