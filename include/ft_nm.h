@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nm.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 14:36:29 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/06 11:34:31 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/07 15:03:18 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@
 # define OPT_U 0b00010000 // -u : show only undefined symbols
 # define OPT_U_MAJ 0b00100000 // -U : don't show undefined symbols
 # define OPT_J 0b01000000 // -j : Just display the symbol names (no value or type).
+
+# define ENDIAN(X) (( X >> 24 ) | (( X << 8) & 0x00ff0000 ) | (( X >> 8) & 0x0000ff00) | ( X << 24))
 
 /*
 **	SYMBOLES
@@ -116,7 +118,7 @@ void			print_options();
 */
 
 void			find_architecture(t_list *node);
-
+void			match_header(t_list *node);
 /*
 **	LOAD COMMAND
 */
@@ -143,6 +145,15 @@ void			search_section_64(void *lc, t_architecture *archi);
 */
 
 t_list			*search_archives(t_file *file);
+
+/*
+**	FAT
+*/
+
+t_list			*search_fat_32(t_file *file);
+t_list			*search_fat_cigam_32(t_file *file);
+t_list			*search_fat_64(t_file *file);
+t_list			*search_fat_cigam_64(t_file *file);
 
 /*
 **	SYMBOLES TYPES

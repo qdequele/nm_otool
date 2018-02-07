@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+         #
+#    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/24 14:29:39 by qdequele          #+#    #+#              #
-#    Updated: 2018/02/06 11:07:01 by quentindequ      ###   ########.fr        #
+#    Updated: 2018/02/07 13:12:36 by qdequele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ NAME		=	ft_nm
 _SRC		=	ft_nm.c \
 				sort.c \
 				parsing/archives.c \
+				parsing/fat.c \
 				parsing/header.c \
 				parsing/load_command.c \
 				parsing/nlist.c \

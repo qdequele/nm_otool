@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   architecture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 13:00:46 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/06 15:26:43 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/07 15:30:34 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ void	architecture_description(t_list *node)
 
 	archi = (t_architecture *)node->content;
 
-	ft_putchar('\n');
+	if (archi->sym_list == NULL)
+		return;
+	if (ft_strlen(archi->type) != 0)
+		ft_putchar('\n');
 	ft_putstr(archi->type);
 
 	if ((g_env->options & OPT_P) == OPT_P)
