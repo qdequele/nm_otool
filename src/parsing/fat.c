@@ -6,100 +6,44 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 11:24:30 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/07 17:15:12 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/08 14:37:21 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_nm.h>
 
-t_list	*search_fat_32(t_file *file)
+void	search_fat_32(void *ptr)
 {
-	unsigned int		i;
+	int					i;
 	struct fat_header	*header;
 	struct fat_arch		*arch;
-	t_list				*archi;
-	t_list				*archi_list;
 
-	header = (struct fat_header *)file->ptr;
+	ft_putendl("search_fat_32");
+	header = (struct fat_header *)ptr;
 	i = 0;
-	archi_list = NULL;
-	arch = (struct fat_arch*)((void*)file->ptr + sizeof(struct fat_header));
-	while (i < header->nfat_arch)
+	arch = (struct fat_arch*)((void*)ptr + sizeof(struct fat_header));
+	while (i < convert_endian_32(header->nfat_arch))
 	{
-		archi = create_architecture("", (void *)header + arch->offset);
-		match_header(archi);
-		ft_lstaddend(&archi_list, archi);
+		match_header((void *)header + convert_endian_32(arch->offset));
 		arch += sizeof(struct fat_arch);
 		i++;
 	}
-	return (archi_list);
 }
 
-t_list	*search_fat_cigam_32(t_file *file)
+void	search_fat_64(void *ptr)
 {
-	unsigned int		i;
+	int					i;
 	struct fat_header	*header;
-	struct fat_arch		*arch;
-	t_list				*archi;
-	t_list				*archi_list;
+	struct fat_arch_64	*arch;
 
-	header = (struct fat_header *)file->ptr;
+	ft_putendl("search_fat_64");
+	header = (struct fat_header *)ptr;
 	i = 0;
-	archi_list = NULL;
-	arch = (struct fat_arch*)((void*)file->ptr + sizeof(struct fat_header));
-	while (i < ENDIAN(header->nfat_arch))
+	arch = (struct fat_arch_64*)((void*)ptr + sizeof(struct fat_header));
+	while (i < convert_endian_64(header->nfat_arch))
 	{
-		archi = create_architecture("", (void *)header + ENDIAN(arch->offset));
-		match_header(archi);
-		ft_lstaddend(&archi_list, archi);
-		arch += sizeof(struct fat_arch);
-		i++;
-	}
-	return (archi_list);
-}
-
-t_list	*search_fat_64(t_file *file)
-{
-	unsigned int			i;
-	struct fat_header		*header;
-	struct fat_arch_64		*arch;
-	t_list					*archi;
-	t_list					*archi_list;
-
-	header = (struct fat_header *)file->ptr;
-	i = 0;
-	archi_list = NULL;
-	arch = (struct fat_arch_64*)((void*)header + sizeof(struct fat_header));
-	while (i < header->nfat_arch)
-	{
-		archi = create_architecture("", (void *)header + arch->offset);
-		match_header(archi);
-		ft_lstaddend(&archi_list, archi);
+		match_header((void *)header + convert_endian_64(arch->offset));
 		arch += sizeof(struct fat_arch_64);
 		i++;
 	}
-	return (archi_list);
-}
-
-t_list	*search_fat_cigam_64(t_file *file)
-{
-	unsigned int			i;
-	struct fat_header		*header;
-	struct fat_arch_64		*arch;
-	t_list					*archi;
-	t_list					*archi_list;
-
-	header = (struct fat_header *)file->ptr;
-	i = 0;
-	archi_list = NULL;
-	arch = (struct fat_arch_64*)((void*)header + sizeof(struct fat_header));
-	while (i < ENDIAN(header->nfat_arch))
-	{
-		archi = create_architecture("", (void *)header + ENDIAN(arch->offset));
-		match_header(archi);
-		ft_lstaddend(&archi_list, archi);
-		arch += sizeof(struct fat_arch_64);
-		i++;
-	}
-	return (archi_list);
 }

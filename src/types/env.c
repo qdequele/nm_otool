@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 13:07:52 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/06 10:52:36 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/08 14:34:39 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,12 @@ void		create_env()
 		g_env = NULL;
 		return ;
 	}
-	env->nb_files = 0;
-	env->file_list = NULL;
 	env->options = 0;
+	env->ptr= NULL;
+	env->filename = NULL;
+	env->current_group = NULL;
+	env->sym_list = NULL;
+	env->sec_list = NULL;
 	g_env = env;
 }
 
@@ -57,5 +60,5 @@ int			parse_options_nm(char **entry)
 
 void		env_description()
 {
-	ft_lstiter(g_env->file_list, file_description);
+	// ft_lstiter(g_env->file_list, file_description);
 }

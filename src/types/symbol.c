@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 11:35:21 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/07 16:29:55 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/08 11:24:55 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_list	*create_sym(char *addr, char *type, char *name)
 		return (NULL);
 	if ((lst = (t_list *)malloc(sizeof(t_list))) == NULL)
 		return (NULL);
+	sym->group = NULL;
 	sym->addr = addr;
 	sym->type = type;
 	sym->name = name;

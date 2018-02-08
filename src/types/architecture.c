@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 13:00:46 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/07 15:30:34 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/08 09:49:26 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,9 @@ t_list	*create_architecture(char *type, void *ptr)
 		return (NULL);
 	archi->type = type;
 	archi->ptr = ptr;
-	archi->nb_sym = 0;
 	archi->sym_list = NULL;
-	archi->nb_sec = 0;
 	archi->sec_list = NULL;
+	archi->arch_list = NULL;
 	lst->content = (void *)archi;
 	lst->content_size = sizeof(archi);
 	lst->next = NULL;
