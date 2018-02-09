@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
+#    By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/24 14:29:39 by qdequele          #+#    #+#              #
-#    Updated: 2018/02/08 14:15:10 by qdequele         ###   ########.fr        #
+#    Updated: 2018/02/09 15:15:01 by quentindequ      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nm.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 14:36:29 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/08 14:34:22 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/09 15:13:57 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # include <fcntl.h>
 # include <sys/stat.h>
 # include <stdlib.h>
+
+# define DEBUG 0
 
 # define OPT_N 0b00000001 // -n : Sort numerically rather than alphabetically.
 # define OPT_O 0b00000010 // -o : Prepend file or archive element name to each output line, rather than only once.
@@ -94,8 +96,8 @@ void			search_lc_32(void *ptr);
 void			search_lc_64(void *ptr);
 void			search_nlist_32(void *lc, void *ptr);
 void			search_nlist_64(void *lc, void *ptr);
-void			search_section_32(void *lc, void *ptr);
-void			search_section_64(void *lc, void *ptr);
+void			search_section_32(void *lc);
+void			search_section_64(void *lc);
 void			search_archives(void *ptr);
 void			search_fat_32(void *ptr);
 void			search_fat_64(void *ptr);

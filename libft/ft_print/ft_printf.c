@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 14:12:26 by qdequele          #+#    #+#             */
-/*   Updated: 2016/10/26 19:52:27 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/09 15:12:24 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

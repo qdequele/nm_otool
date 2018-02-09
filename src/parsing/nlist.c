@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nlist.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 10:44:47 by quentindequ       #+#    #+#             */
-/*   Updated: 2018/02/08 14:11:11 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/09 15:13:29 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	search_nlist_32(void *lc, void *ptr)
 	t_list					*symbol;
 	char					*type;
 
+	if (DEBUG) ft_putendl("search_nlist_32");
 	array = ptr + ((struct symtab_command *) lc)->symoff;
 	stringtable = ptr + ((struct symtab_command *) lc)->stroff;
 	i = 0;
@@ -49,6 +50,7 @@ void	search_nlist_64(void *lc, void *ptr)
 	t_list					*symbol;
 	char					*type;
 
+	if (DEBUG) ft_putendl("search_nlist_64");
 	array = ptr + ((struct symtab_command *) lc)->symoff;
 	stringtable = ptr + ((struct symtab_command *) lc)->stroff;
 	i = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fat.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 11:24:30 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/08 14:37:21 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/09 15:13:08 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	search_fat_32(void *ptr)
 	struct fat_header	*header;
 	struct fat_arch		*arch;
 
-	ft_putendl("search_fat_32");
+	if (DEBUG) ft_putendl("search_fat_32");
 	header = (struct fat_header *)ptr;
 	i = 0;
 	arch = (struct fat_arch*)((void*)ptr + sizeof(struct fat_header));
@@ -36,7 +36,7 @@ void	search_fat_64(void *ptr)
 	struct fat_header	*header;
 	struct fat_arch_64	*arch;
 
-	ft_putendl("search_fat_64");
+	if (DEBUG) ft_putendl("search_fat_64");
 	header = (struct fat_header *)ptr;
 	i = 0;
 	arch = (struct fat_arch_64*)((void*)ptr + sizeof(struct fat_header));

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 11:05:36 by quentindequ       #+#    #+#             */
-/*   Updated: 2018/02/08 14:37:04 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/09 15:13:14 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	match_header(void *ptr)
 {
 	unsigned int	magic_number;
 
-	ft_putendl("match_header");
+	if (DEBUG) ft_putendl("match_header");
 	magic_number = *(unsigned int *)ptr;
 	if (magic_number == MH_MAGIC_64 || magic_number == MH_CIGAM_64)
 	{
@@ -40,4 +40,5 @@ void	match_header(void *ptr)
 	}
 	else
 		return ;
+	ft_lstiter(g_env->sym_list, symbol_description);
 }

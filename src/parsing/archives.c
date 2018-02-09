@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   archives.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 16:54:31 by quentindequ       #+#    #+#             */
-/*   Updated: 2018/02/08 14:37:30 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/09 15:19:01 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	search_archives(void *ptr)
 	int				o_size;
 	char			*o_name;
 
-	ft_putendl("search_archives");
+	if (DEBUG) ft_putendl("search_archives");
 	header = (struct ar_hdr *)(void*)(ptr + SARMAG);
 	while ((header = (struct ar_hdr *)((void*)header + sizeof(struct ar_hdr)
 			+ ft_atoi(header->ar_size))) && ((char *)header)[0])

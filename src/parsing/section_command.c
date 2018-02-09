@@ -6,13 +6,13 @@
 /*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 12:55:36 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/06 11:39:04 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/09 15:13:49 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_nm.h>
 
-void	search_section_32(void *lc, t_architecture *archi)
+void	search_section_32(void *lc)
 {
 	struct segment_command	*seg;
 	struct section			*sec;
@@ -20,6 +20,7 @@ void	search_section_32(void *lc, t_architecture *archi)
 	int						j;
 	char					*content;
 
+	if (DEBUG) ft_putendl("search_section_32");
 	seg = (struct segment_command *)lc;
 	sec = (struct section *)((void *)seg + sizeof(struct segment_command));
 	i = 0;
@@ -39,13 +40,13 @@ void	search_section_32(void *lc, t_architecture *archi)
 		// 	j++;
 		// }
 		content = ft_strfjoin(content, "\n");
-		ft_lstaddend(&(archi->sec_list), create_section(sec->segname, sec->sectname, content));
+		ft_lstaddend(&(g_env->sec_list), create_section(sec->segname, sec->sectname, content));
 		sec = (struct section *)((void *)sec + sizeof(struct section));
 		i++;
 	}
 }
 
-void	search_section_64(void *lc, t_architecture *archi)
+void	search_section_64(void *lc)
 {
 	struct segment_command_64	*seg;
 	struct section_64			*sec;
@@ -53,6 +54,7 @@ void	search_section_64(void *lc, t_architecture *archi)
 	int							j;
 	char						*content;
 
+	if (DEBUG) ft_putendl("search_section_64");
 	seg = (struct segment_command_64 *)lc;
 	sec = (struct section_64 *)((void *)seg + sizeof(struct segment_command_64));
 	i = 0;
@@ -72,7 +74,7 @@ void	search_section_64(void *lc, t_architecture *archi)
 		// 	j++;
 		// }
 		content = ft_strfjoin(content, "\n");
-		ft_lstaddend(&(archi->sec_list), create_section(sec->segname, sec->sectname, content));
+		ft_lstaddend(&(g_env->sec_list), create_section(sec->segname, sec->sectname, content));
 		sec = (struct section_64 *)((void *)sec + sizeof(struct section_64));
 		i++;
 	}
