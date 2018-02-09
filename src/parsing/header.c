@@ -6,7 +6,7 @@
 /*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 11:05:36 by quentindequ       #+#    #+#             */
-/*   Updated: 2018/02/09 15:13:14 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/09 15:51:12 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,19 @@ void	match_header(void *ptr)
 	else if (magic_number == FAT_MAGIC || magic_number == FAT_CIGAM)
 	{
 		search_fat_32(ptr);
+		env_description();
 	}
 	else if (magic_number == FAT_MAGIC_64 || magic_number == FAT_CIGAM_64)
 	{
 		search_fat_64(ptr);
+		env_description();
 	}
 	else if (ft_strncmp((char *)ptr, ARMAG, SARMAG) == 0)
 	{
 		search_archives(ptr);
+		env_description();
 	}
 	else
 		return ;
-	ft_lstiter(g_env->sym_list, symbol_description);
+
 }

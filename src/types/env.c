@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 13:07:52 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/08 14:34:39 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/09 15:33:39 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,16 @@ int			parse_options_nm(char **entry)
 
 void		env_description()
 {
-	// ft_lstiter(g_env->file_list, file_description);
+	if (g_env->sym_list == NULL)
+		return;
+
+	if ((g_env->options & OPT_P) == OPT_P)
+		return ft_lstiter(g_env->sym_list, symbol_description);
+	else if ((g_env->options & OPT_N) == OPT_N)
+		ft_lst_bubble_sort(g_env->sym_list, sort_numerically);
+	else
+		ft_lst_bubble_sort(g_env->sym_list, sort_alphabetically);
+	if ((g_env->options & OPT_R) == OPT_R)
+		sort_reverse(&(g_env->sym_list));
+	ft_lstiter(g_env->sym_list, symbol_description);
 }

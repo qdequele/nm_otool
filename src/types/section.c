@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sec.c                                              :+:      :+:    :+:   */
+/*   section.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 11:29:17 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/06 10:18:28 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/09 15:32:03 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,4 @@ t_list	*create_section(char *seg_name, char *sec_name, char *content)
 	lst->content_size = sizeof(sec);
 	lst->next = NULL;
 	return (lst);
-}
-
-void	section_description(t_list *node)
-{
-	t_section		*sect;
-
-	sect = (t_section *)node->content;
-	ft_putstr("Contents of (");
-	ft_putstr(sect->seg_name);
-	ft_putstr(",");
-	ft_putstr(sect->sec_name);
-	ft_putendl(") section");
-	ft_putendl(sect->content);
 }

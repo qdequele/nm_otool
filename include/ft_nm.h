@@ -6,14 +6,14 @@
 /*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 14:36:29 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/09 15:13:57 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/09 16:14:55 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_NM_H
 # define FT_NM_H
 
-# include <libft.h>
+# include "../libft/libft.h"
 # include <stdio.h>
 # include <sys/mman.h>
 # include <mach-o/loader.h>
@@ -63,7 +63,6 @@ typedef struct	s_section {
 }				t_section;
 
 t_list			*create_section(char *seg_name, char *sec_name, char *content);
-void			section_description(t_list *node);
 
 
 /*

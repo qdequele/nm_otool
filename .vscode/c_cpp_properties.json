@@ -10,7 +10,10 @@
                 "/usr/include",
                 "${workspaceRoot}",
                 "${workspaceRoot}/include",
-                "${workspaceRoot}/libft"
+                "${workspaceRoot}/includes",
+				"${workspaceRoot}/libft",
+                "${workspaceRoot}/libft/include",
+                "${workspaceRoot}/libft/includes"
             ],
             "defines": [],
             "intelliSenseMode": "clang-x64",

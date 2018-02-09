@@ -6,7 +6,7 @@
 #    By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/24 14:29:39 by qdequele          #+#    #+#              #
-#    Updated: 2018/02/09 15:15:01 by quentindequ      ###   ########.fr        #
+#    Updated: 2018/02/09 15:29:03 by quentindequ      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,6 @@ _SRC		=	ft_nm.c \
 				parsing/nlist.c \
 				parsing/section_command.c \
 				parsing/symbol_type.c \
-				types/architecture.c \
 				types/env.c \
 				types/file.c \
 				types/section.c \
