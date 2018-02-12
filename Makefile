@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+         #
+#    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/24 14:29:39 by qdequele          #+#    #+#              #
-#    Updated: 2018/02/09 15:29:03 by quentindequ      ###   ########.fr        #
+#    Updated: 2018/02/12 14:00:41 by qdequele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ _SRC		=	ft_nm.c \
 				parsing/symbol_type.c \
 				types/env.c \
 				types/file.c \
+				types/group.c \
 				types/section.c \
 				types/symbol.c
 

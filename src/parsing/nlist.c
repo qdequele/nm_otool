@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nlist.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 10:44:47 by quentindequ       #+#    #+#             */
-/*   Updated: 2018/02/09 15:13:29 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/12 13:53:38 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	search_nlist_32(void *lc, void *ptr)
 			else
 				symbol = create_sym(ft_padding_right(ft_ultohex(array[i].n_value
 				), 8, '0'), type, stringtable + array[i].n_un.n_strx);
-			ft_lstaddend(&(g_env->sym_list), symbol);
+			ft_lstaddend(&(g_env->current_group->sym_list), symbol);
 		}
 		i++;
 	}
@@ -65,7 +65,7 @@ void	search_nlist_64(void *lc, void *ptr)
 			else
 				symbol = create_sym(ft_padding_right(ft_ultohex(array[i].n_value), 16, '0'), type,
 									stringtable + array[i].n_un.n_strx);
-			ft_lstaddend(&(g_env->sym_list), symbol);
+			ft_lstaddend(&(g_env->current_group->sym_list), symbol);
 		}
 		i++;
 	}

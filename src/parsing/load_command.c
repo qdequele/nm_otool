@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_command.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 13:31:16 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/09 15:13:24 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/12 13:53:19 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	search_lc_32(void *ptr)
 	header = (struct mach_header *)ptr;
 	lc = ptr + sizeof(struct mach_header_64);
 	i = 0;
+	if (!g_env->current_group)
+		create_group(NULL);
 	while (i < (int)header->ncmds)
 	{
 		if (lc->cmd == LC_SYMTAB)
@@ -43,6 +45,8 @@ void	search_lc_64(void *ptr)
 	header = (struct mach_header_64 *)ptr;
 	lc = ptr + sizeof(struct mach_header_64);
 	i = 0;
+	if (!g_env->current_group)
+		create_group(NULL);
 	while (i < (int)header->ncmds)
 	{
 		if (lc->cmd == LC_SYMTAB)

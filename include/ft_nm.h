@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nm.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 14:36:29 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/09 16:14:55 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/12 15:12:36 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include <sys/stat.h>
 # include <stdlib.h>
 
-# define DEBUG 0
+# define DEBUG 1
 
 # define OPT_N 0b00000001 // -n : Sort numerically rather than alphabetically.
 # define OPT_O 0b00000010 // -o : Prepend file or archive element name to each output line, rather than only once.
@@ -43,7 +43,6 @@
 */
 
 typedef struct	s_sym {
-	char		*group;
 	char		*addr;
 	char		*type;
 	char		*name;
@@ -64,6 +63,18 @@ typedef struct	s_section {
 
 t_list			*create_section(char *seg_name, char *sec_name, char *content);
 
+/*
+**	GROUP
+*/
+
+typedef struct	s_group {
+	char		*name;
+	t_list		*sym_list;
+	t_list		*sec_list;
+}				t_group;
+
+void			create_group(char *name);
+void			group_description(t_list *node);
 
 /*
 **	ENV
@@ -73,9 +84,8 @@ typedef struct	s_env {
 	int			options;
 	void		*ptr;
 	char		*filename;
-	char		*current_group;
-	t_list		*sym_list;
-	t_list		*sec_list;
+	t_group		*current_group;
+	t_list		*group_list;
 }				t_env;
 
 t_env			*g_env;

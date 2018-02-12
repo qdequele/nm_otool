@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nm.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 14:38:24 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/09 15:35:43 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/12 14:43:35 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		main(int ac, char ** av)
 		}
 		read_file(av[i]);
 		match_header(g_env->ptr);
-		//show_env();
+		env_description();
 		//delete_env();
 	}
 	return (0);

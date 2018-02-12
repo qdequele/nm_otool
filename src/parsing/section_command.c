@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   section_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 12:55:36 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/09 15:13:49 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/12 13:54:22 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	search_section_32(void *lc)
 		// 	j++;
 		// }
 		content = ft_strfjoin(content, "\n");
-		ft_lstaddend(&(g_env->sec_list), create_section(sec->segname, sec->sectname, content));
+		ft_lstaddend(&(g_env->current_group->sec_list), create_section(sec->segname, sec->sectname, content));
 		sec = (struct section *)((void *)sec + sizeof(struct section));
 		i++;
 	}
@@ -74,7 +74,7 @@ void	search_section_64(void *lc)
 		// 	j++;
 		// }
 		content = ft_strfjoin(content, "\n");
-		ft_lstaddend(&(g_env->sec_list), create_section(sec->segname, sec->sectname, content));
+		ft_lstaddend(&(g_env->current_group->sec_list), create_section(sec->segname, sec->sectname, content));
 		sec = (struct section_64 *)((void *)sec + sizeof(struct section_64));
 		i++;
 	}

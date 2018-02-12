@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   symbol_type.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 10:51:36 by quentindequ       #+#    #+#             */
-/*   Updated: 2018/02/09 15:32:51 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/12 13:56:41 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*symbol_type_64(uint8_t type, uint8_t sect)
 		ret = ft_strdup("A");
 	else if ((type & N_TYPE) == N_SECT)
 	{
-		sec = (t_section *)(ft_lstget_at(g_env->sec_list, (int)sect - 1)->content);
+		sec = (t_section *)(ft_lstget_at(g_env->current_group->sec_list, (int)sect - 1)->content);
 		if (ft_strcmp(sec->sec_name, SECT_TEXT) == 0)
 			ret = ft_strdup("T");
 		else if (ft_strcmp(sec->sec_name, SECT_DATA) == 0)
@@ -56,7 +56,7 @@ char	*symbol_type_32(uint8_t type, uint8_t sect)
 		ret = ft_strdup("A");
 	else if ((type & N_TYPE) == N_SECT)
 	{
-		sec = (t_section *)(ft_lstget_at(g_env->sec_list, (int)sect - 1)->content);
+		sec = (t_section *)(ft_lstget_at(g_env->current_group->sec_list, (int)sect - 1)->content);
 		if (ft_strcmp(sec->sec_name, SECT_TEXT) == 0)
 			ret = ft_strdup("T");
 		else if (ft_strcmp(sec->sec_name, SECT_DATA) == 0)

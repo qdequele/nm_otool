@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fat.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 11:24:30 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/09 15:32:41 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/12 14:42:13 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	search_fat_32(void *ptr)
 	if (DEBUG) ft_putendl("search_fat_32");
 	header = (struct fat_header *)ptr;
 	i = 0;
-	arch = (struct fat_arch*)((void*)ptr + sizeof(struct fat_header));
 	while (i < convert_endian_32(header->nfat_arch))
 	{
+		arch = (struct fat_arch*)((void*)ptr + sizeof(struct fat_header));
 		match_header((void *)header + convert_endian_32(arch->offset));
 		arch += sizeof(struct fat_arch);
 		i++;
@@ -39,9 +39,9 @@ void	search_fat_64(void *ptr)
 	if (DEBUG) ft_putendl("search_fat_64");
 	header = (struct fat_header *)ptr;
 	i = 0;
-	arch = (struct fat_arch_64*)((void*)ptr + sizeof(struct fat_header));
 	while (i < convert_endian_64(header->nfat_arch))
 	{
+		arch = (struct fat_arch_64*)((void*)ptr + sizeof(struct fat_header));
 		match_header((void *)header + convert_endian_64(arch->offset));
 		arch += sizeof(struct fat_arch_64);
 		i++;

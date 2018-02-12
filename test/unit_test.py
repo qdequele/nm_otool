@@ -59,7 +59,7 @@ def tests_nm(tests_array, args):
         else:
             result = "\033[92mOK\033[0m"
 
-        if args.errors and "OK" in result:
+        if args.errors or "OK" in result:
            continue
         print("\t+ {:{length}} {result}".format(t, length=max_len, result=result))
 
@@ -133,8 +133,8 @@ def tests_main(args):
     # # launch tests
     if args.nm:
         errors += tests_nm(files_to_test, args)
-    if args.otool:
-        errors += tests_otool(files_to_test)
+    # if args.otool:
+    #     errors += tests_otool(files_to_test)
 
     if errors:
         print("\n[!] total amount of errors: \033[91m{}\033[0m".format(errors))
@@ -148,10 +148,10 @@ if __name__ == '__main__':
 
     # argument parsing
     parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter, description=textwrap.dedent('''
-    \033[92m███╗   ██╗███╗   ███╗         ██████╗ ████████╗ ██████╗  ██████╗ ██╗     
-    ████╗  ██║████╗ ████║        ██╔═══██╗╚══██╔══╝██╔═══██╗██╔═══██╗██║     
-    ██╔██╗ ██║██╔████╔██║        ██║   ██║   ██║   ██║   ██║██║   ██║██║     
-    ██║╚██╗██║██║╚██╔╝██║        ██║   ██║   ██║   ██║   ██║██║   ██║██║     
+    \033[92m███╗   ██╗███╗   ███╗         ██████╗ ████████╗ ██████╗  ██████╗ ██╗
+    ████╗  ██║████╗ ████║        ██╔═══██╗╚══██╔══╝██╔═══██╗██╔═══██╗██║
+    ██╔██╗ ██║██╔████╔██║        ██║   ██║   ██║   ██║   ██║██║   ██║██║
+    ██║╚██╗██║██║╚██╔╝██║        ██║   ██║   ██║   ██║   ██║██║   ██║██║
     ██║ ╚████║██║ ╚═╝ ██║███████╗╚██████╔╝   ██║   ╚██████╔╝╚██████╔╝███████╗
     ╚═╝  ╚═══╝╚═╝     ╚═╝╚══════╝ ╚═════╝    ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝\033[0m
 
