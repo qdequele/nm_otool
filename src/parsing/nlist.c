@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 10:44:47 by quentindequ       #+#    #+#             */
-/*   Updated: 2018/02/12 13:53:38 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/13 10:55:31 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,15 @@ void	search_nlist_32(void *lc, void *ptr)
 		if (ft_strlen((char *)(stringtable + array[i].n_un.n_strx)) != 0
 			&& ft_strcmp(type, "X") != 0)
 		{
+			if (DEBUG) ft_putendl(stringtable + array[i].n_un.n_strx);
 			if (ft_strcmp(type, "U") == 0)
 				symbol = create_sym(ft_padding_right(" ", 16, ' '), type,
 									stringtable + array[i].n_un.n_strx);
 			else
 				symbol = create_sym(ft_padding_right(ft_ultohex(array[i].n_value
-				), 8, '0'), type, stringtable + array[i].n_un.n_strx);
-			ft_lstaddend(&(g_env->current_group->sym_list), symbol);
+				), 16, '0'), type, stringtable + array[i].n_un.n_strx);
+
+			ft_lstskip(&(g_env->current_group->sym_list), symbol, equatable);
 		}
 		i++;
 	}
@@ -59,13 +61,14 @@ void	search_nlist_64(void *lc, void *ptr)
 		type = symbol_type_64(array[i].n_type, array[i].n_sect);
 		if (ft_strlen((char *)(stringtable + array[i].n_un.n_strx)) != 0 && ft_strcmp(type, "X") != 0)
 		{
+			if (DEBUG) ft_putendl(stringtable + array[i].n_un.n_strx);
 			if (ft_strcmp(type, "U") == 0)
 				symbol = create_sym(ft_padding_right(" ", 16, ' '), type,
 									stringtable + array[i].n_un.n_strx);
 			else
 				symbol = create_sym(ft_padding_right(ft_ultohex(array[i].n_value), 16, '0'), type,
 									stringtable + array[i].n_un.n_strx);
-			ft_lstaddend(&(g_env->current_group->sym_list), symbol);
+			ft_lstreplace(&(g_env->current_group->sym_list), symbol, equatable);
 		}
 		i++;
 	}

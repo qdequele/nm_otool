@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 14:36:29 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/12 15:12:36 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/13 10:56:22 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include <sys/stat.h>
 # include <stdlib.h>
 
-# define DEBUG 1
+# define DEBUG 0
 
 # define OPT_N 0b00000001 // -n : Sort numerically rather than alphabetically.
 # define OPT_O 0b00000010 // -o : Prepend file or archive element name to each output line, rather than only once.
@@ -120,7 +120,7 @@ char			*symbol_type_32(uint8_t type, uint8_t sect);
 int				sort_alphabetically(t_list *node);
 int				sort_numerically(t_list *node);
 int				sort_reverse(t_list **node);
-
+int				equatable(t_list *f, t_list *b);
 int				convert_endian_32(u_int32_t nb);
 int				convert_endian_64(u_int64_t nb);
 

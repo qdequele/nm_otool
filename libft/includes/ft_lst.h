@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 11:19:04 by qdequele          #+#    #+#             */
-/*   Updated: 2018/01/25 11:36:35 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/13 10:16:00 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ t_list				*ft_lstget_at(t_list *lst, int at);
 t_list				*ft_lst_seek(t_list *list, char *str);
 void				ft_lstremdup(t_list **list, int (*comp)(void *, void *),
 					void (*del)(void *, size_t));
+void				ft_lstreplace(t_list **alst, t_list *n,
+					int (*f)(t_list *f, t_list *b));
+void				ft_lstskip(t_list **alst, t_list *n,
+					int (*f)(t_list *f, t_list *b));
 int					ft_lstremdup_str(void *prev, void *next);
 
 #endif

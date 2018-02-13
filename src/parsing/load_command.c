@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 13:31:16 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/12 13:53:19 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/13 10:53:18 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,18 @@ void	search_lc_32(void *ptr)
 
 	if (DEBUG) ft_putendl("search_lc_32");
 	header = (struct mach_header *)ptr;
-	lc = ptr + sizeof(struct mach_header_64);
+	lc = ptr + sizeof(struct mach_header);
 	i = 0;
 	if (!g_env->current_group)
 		create_group(NULL);
 	while (i < (int)header->ncmds)
 	{
 		if (lc->cmd == LC_SYMTAB)
+		{
 			search_nlist_32(lc, ptr);
-		else if (lc->cmd == LC_SEGMENT_64)
+			if (DEBUG) ft_putendl("search_nlist_32 finished");
+		}
+		else if (lc->cmd == LC_SEGMENT)
 			search_section_32(lc);
 		lc = (void*)lc + lc->cmdsize;
 		i++;
@@ -50,7 +53,10 @@ void	search_lc_64(void *ptr)
 	while (i < (int)header->ncmds)
 	{
 		if (lc->cmd == LC_SYMTAB)
+		{
 			search_nlist_64(lc, ptr);
+			if (DEBUG) ft_putendl("search_nlist_64 finished");
+		}
 		else if (lc->cmd == LC_SEGMENT_64)
 			search_section_64(lc);
 		lc = (void*)lc + lc->cmdsize;
