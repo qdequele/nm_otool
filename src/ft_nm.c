@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 14:38:24 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/13 10:49:44 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/13 11:37:35 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int		main(int ac, char ** av)
 		}
 		read_file(av[i]);
 		match_header(g_env->ptr);
-		if (DEBUG) ft_putendl("MAIN");
 		env_description();
 		//delete_env();
 	}

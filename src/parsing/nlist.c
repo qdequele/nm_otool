@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 10:44:47 by quentindequ       #+#    #+#             */
-/*   Updated: 2018/02/13 10:55:31 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/13 14:12:44 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ void	search_nlist_32(void *lc, void *ptr)
 		{
 			if (DEBUG) ft_putendl(stringtable + array[i].n_un.n_strx);
 			if (ft_strcmp(type, "U") == 0)
-				symbol = create_sym(ft_padding_right(" ", 16, ' '), type,
+				symbol = create_sym(ft_padding_right(" ", 8, ' '), type,
 									stringtable + array[i].n_un.n_strx);
 			else
 				symbol = create_sym(ft_padding_right(ft_ultohex(array[i].n_value
-				), 16, '0'), type, stringtable + array[i].n_un.n_strx);
+				), 8, '0'), type, stringtable + array[i].n_un.n_strx);
 
 			ft_lstskip(&(g_env->current_group->sym_list), symbol, equatable);
 		}

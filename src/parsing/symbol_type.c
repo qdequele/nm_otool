@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 10:51:36 by quentindequ       #+#    #+#             */
-/*   Updated: 2018/02/12 13:56:41 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/13 16:59:56 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,15 @@ char	*symbol_type_32(uint8_t type, uint8_t sect)
 			ret = ft_strdup("T");
 		else if (ft_strcmp(sec->sec_name, SECT_DATA) == 0)
 			ret = ft_strdup("D");
-		else if (ft_strcmp(sec->sec_name, SECT_COMMON) == 0)
+		// else if (ft_strcmp(sec->sec_name, SECT_COMMON) == 0)
+		// 	ret = ft_strdup("B");
+		else if (ft_strcmp(sec->sec_name, SECT_BSS) == 0)
 			ret = ft_strdup("B");
 		else
+		{
 			ret = ft_strdup("S");
+			// printf("%s\n", sec->sec_name);
+		}
 	}
 	else if ((type & N_TYPE) == N_PBUD)
 		ret = ft_strdup("P");
