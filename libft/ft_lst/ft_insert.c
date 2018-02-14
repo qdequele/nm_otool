@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nm.c                                            :+:      :+:    :+:   */
+/*   ft_insert_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/24 14:38:24 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/14 13:33:19 by qdequele         ###   ########.fr       */
+/*   Created: 2018/02/14 10:25:40 by qdequele          #+#    #+#             */
+/*   Updated: 2018/02/14 13:18:38 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_nm.h>
+#include "../libft.h"
 
-int		main(int ac, char ** av)
+void	ft_lstinsert(t_list **lst, t_list *new, int (*c)(t_list *current, t_list *new))
 {
-	int		i;
+	t_list	*tmp;
+	int		ret;
 
-
-	i = parse_options_nm(av) - 1;
-	while (++i < ac)
+	tmp = *lst;
+	if (tmp == NULL || new == NULL)
+		return ;
+	while (tmp->next)
 	{
-		create_env();
-		if (g_env == NULL)
+		ret = c(tmp, new);
+		if (ret == 1)
 		{
-			perror("malloc g_env");
-			exit(EXIT_FAILURE);
+			new->next = tmp->next;
+			tmp->next = new;
+			return ;
+		} else if (ret == -1)
+		{
+			tmp->content = new->content;
+			return ;
 		}
-		read_file(av[i]);
-		match_header(g_env->ptr);
-		env_description();
-		//delete_env();
+		tmp = tmp->next;
 	}
-	return (0);
+	tmp->next = new;
 }
-

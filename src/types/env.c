@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 13:07:52 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/13 17:24:05 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/14 10:55:08 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void		create_env()
 		return ;
 	}
 	env->options = 0;
+	env->nb_fat = 0;
 	env->ptr= NULL;
 	env->filename = NULL;
 	env->current_group = NULL;
@@ -62,7 +63,7 @@ void		env_description()
 	if (g_env->group_list == NULL)
 		return;
 
-	if (ft_strcmp(g_env->filename, "/usr/bin/python3-32") == 0 || ft_strcmp(g_env->filename, "/usr/bin/python3.4-32") == 0)
+	if (g_env->nb_fat == 1)
 	{
 		ft_putstr(g_env->filename);
 		ft_putendl(":");

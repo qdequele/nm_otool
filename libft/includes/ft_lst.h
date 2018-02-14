@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 11:19:04 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/13 10:16:00 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/14 13:19:15 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+void				ft_lstinsert(t_list **lst, t_list *new,
+						int (*c)(t_list *current, t_list *new));
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstadd_at(t_list **lst, t_list *new, int at);
 void				ft_lstaddend(t_list **alst, t_list *new);

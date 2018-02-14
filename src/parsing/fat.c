@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 11:24:30 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/13 17:16:10 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/14 10:53:30 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	search_fat_32(void *ptr)
 	if (arch->cputype == 301989888)
 		arch = (void *)arch + sizeof(struct fat_arch);
 	offset = convert_endian_32(arch->offset);
+	g_env->nb_fat = convert_endian_32(header->nfat_arch);
 	while (i < convert_endian_32(header->nfat_arch))
 	{
 		if (arch->cputype == 117440513)
@@ -54,6 +55,7 @@ void	search_fat_64(void *ptr)
 	if (arch->cputype == 301989888)
 		arch = (void *)arch + sizeof(struct fat_arch);
 	offset = convert_endian_64(arch->offset);
+	g_env->nb_fat = convert_endian_64(header->nfat_arch);
 	while (i < convert_endian_64(header->nfat_arch))
 	{
 		if (arch->cputype == 117440513)

@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 14:36:29 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/13 17:16:24 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/14 10:55:54 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct	s_env {
 	int			options;
 	void		*ptr;
 	char		*filename;
+	int			nb_fat;
 	t_group		*current_group;
 	t_list		*group_list;
 }				t_env;
