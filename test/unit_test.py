@@ -133,8 +133,8 @@ def tests_main(args):
     # # launch tests
     if args.nm:
         errors += tests_nm(files_to_test, args)
-    # if args.otool:
-    #     errors += tests_otool(files_to_test)
+    if args.otool:
+        errors += tests_otool(files_to_test)
 
     if errors:
         print("\n[!] total amount of errors: \033[91m{}\033[0m".format(errors))
