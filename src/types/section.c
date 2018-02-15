@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   section.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 11:29:17 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/09 15:32:03 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/15 15:01:20 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,14 @@ t_list	*create_section(char *seg_name, char *sec_name, char *content)
 	lst->content_size = sizeof(sec);
 	lst->next = NULL;
 	return (lst);
+}
+
+
+void	show_sec_name(char *segname, char *sectname)
+{
+	ft_putstr("Contents of (");
+	ft_putstr(segname);
+	ft_putstr(",");
+	ft_putstr(sectname);
+	ft_putstr(") section\n");
 }

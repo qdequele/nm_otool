@@ -6,15 +6,15 @@
 #    By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/24 14:29:39 by qdequele          #+#    #+#              #
-#    Updated: 2018/02/12 14:00:41 by qdequele         ###   ########.fr        #
+#    Updated: 2018/02/14 15:19:20 by qdequele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Define the program
-NAME		=	ft_nm
+NM_NAME		=	ft_nm
+OTOOL_NAME	=	ft_otool
 
-_SRC		=	ft_nm.c \
-				sort.c \
+_SRC		=	sort.c \
 				convert.c \
 				parsing/archives.c \
 				parsing/fat.c \
@@ -31,11 +31,15 @@ _SRC		=	ft_nm.c \
 
 _INC		=	ft_nm.h
 
-SRC			=	$(addprefix src/,$(_SRC))
+NM_SRC		=	$(addprefix src/,$(_SRC)) src/ft_nm.c
+OTOOL_SRC	=	$(addprefix src/,$(_SRC)) src/ft_otool.c
 INC			=	$(addprefix include/,$(_INC))
 
 LIB			=	./libft/libft.a
-OBJ			=	$(SRC:.c=.o)
+
+NM_OBJ		=	$(NM_SRC:.c=.o)
+OTOOL_OBJ	=	$(OTOOL_SRC:.c=.o)
+
 CFLAGS		=	-Wall -Wextra -Werror
 INCLUDES	=	-I ./include/ -I./libft/
 
@@ -43,22 +47,27 @@ INCLUDES	=	-I ./include/ -I./libft/
 	@echo -n .
 	@$gcc $(CFLAGS) -c $< -o $@ $(INCLUDES)
 
-all: $(NAME)
+all: $(NM_NAME) $(OTOOL_NAME)
 
-$(NAME): $(OBJ)
+$(NM_NAME): $(NM_OBJ)
 	@make -C ./libft/
-	@gcc $(CFLAGS) $(OBJ) $(LIB) -o $(NAME)
-	@echo $(NAME) " - compiled"
+	@gcc $(CFLAGS) $(NM_OBJ) $(LIB) -o $(NM_NAME)
+	@echo $(NM_NAME) " - compiled"
+
+$(OTOOL_NAME): $(OTOOL_OBJ)
+	@make -C ./libft/
+	@gcc $(CFLAGS) $(OTOOL_OBJ) $(LIB) -o $(OTOOL_NAME)
+	@echo $(OTOOL_NAME) " - compiled"
 
 clean:
-	@/bin/rm -rf $(OBJ)
+	@/bin/rm -rf $(NM_OBJ) $(OTOOL_OBJ)
 	@make clean -C libft
-	@echo $(NAME) " - Clean all .o files"
+	@echo $(NM_NAME) " - Clean all .o files"
 
 fclean: clean
-	@/bin/rm -rf $(NAME)
+	@/bin/rm -rf $(NM_NAME) $(OTOOL_NAME)
 	@make fclean -C libft
-	@echo $(NAME) " - Clean executable"
+	@echo $(NM_NAME) " " $(OTOOL_NAME) " - Clean executable"
 
 re: fclean all
 

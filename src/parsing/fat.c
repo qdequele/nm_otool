@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 11:24:30 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/14 10:53:30 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/14 15:10:43 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,16 @@ void	search_fat_32(void *ptr)
 	struct fat_arch		*arch;
 	int					offset;
 
-	if (DEBUG) ft_putendl("search_fat_32");
 	header = (struct fat_header *)ptr;
 	i = 0;
 	arch = (struct fat_arch*)((void*)ptr + sizeof(struct fat_header));
-	if (arch->cputype == 301989888)
+	if (convert_endian_32(arch->cputype) == CPU_TYPE_POWERPC)
 		arch = (void *)arch + sizeof(struct fat_arch);
 	offset = convert_endian_32(arch->offset);
 	g_env->nb_fat = convert_endian_32(header->nfat_arch);
 	while (i < convert_endian_32(header->nfat_arch))
 	{
-		if (arch->cputype == 117440513)
+		if (arch->cputype == CPU_TYPE_X86_64)
 		{
 			offset = convert_endian_32(arch->offset);
 			break ;
@@ -37,7 +36,6 @@ void	search_fat_32(void *ptr)
 		arch = (void *)arch + sizeof(struct fat_arch);
 		i++;
 	}
-	if (DEBUG) printf("offset : %d\n", offset);
 	match_header((void *)header + offset);
 }
 
@@ -48,17 +46,16 @@ void	search_fat_64(void *ptr)
 	struct fat_arch_64	*arch;
 	int					offset;
 
-	if (DEBUG) ft_putendl("search_fat_64");
 	header = (struct fat_header *)ptr;
 	i = 0;
 	arch = (struct fat_arch_64*)((void*)ptr + sizeof(struct fat_header));
-	if (arch->cputype == 301989888)
+	if (convert_endian_64(arch->cputype) == CPU_TYPE_POWERPC)
 		arch = (void *)arch + sizeof(struct fat_arch);
 	offset = convert_endian_64(arch->offset);
 	g_env->nb_fat = convert_endian_64(header->nfat_arch);
 	while (i < convert_endian_64(header->nfat_arch))
 	{
-		if (arch->cputype == 117440513)
+		if (convert_endian_64(arch->cputype) == CPU_TYPE_X86_64)
 		{
 			offset = convert_endian_64(arch->offset);
 			break ;
@@ -66,6 +63,5 @@ void	search_fat_64(void *ptr)
 		arch = (void *)arch + sizeof(struct fat_arch_64);
 		i++;
 	}
-	if (DEBUG) printf("offset : %d\n", offset);
 	match_header((void *)header + offset);
 }

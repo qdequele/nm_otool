@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 14:36:29 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/14 10:55:54 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/15 15:07:33 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct	s_section {
 }				t_section;
 
 t_list			*create_section(char *seg_name, char *sec_name, char *content);
+void			show_sec_name(char *segname, char *sectname);
 
 /*
 **	GROUP
@@ -82,6 +83,7 @@ void			group_description(t_list *node);
 
 typedef struct	s_env {
 	int			options;
+	int			otool;
 	void		*ptr;
 	char		*filename;
 	int			nb_fat;
@@ -92,7 +94,7 @@ typedef struct	s_env {
 t_env			*g_env;
 
 void			create_env();
-void			env_description();
+void			env_description(char *name);
 int				parse_options_nm(char **entry);
 void			read_file(char *filename);
 
@@ -111,8 +113,11 @@ void			search_section_64(void *lc);
 void			search_archives(void *ptr);
 void			search_fat_32(void *ptr);
 void			search_fat_64(void *ptr);
-char			*symbol_type_64(uint8_t type, uint8_t sect);
-char			*symbol_type_32(uint8_t type, uint8_t sect);
+
+void			show_section_32(void *lc, void *ptr);
+void			show_section_64(void *lc, void *ptr);
+
+char			*symbol_type(uint8_t type, uint8_t sect);
 
 /*
 **	UTILS

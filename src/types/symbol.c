@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 11:35:21 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/12 15:01:20 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/14 15:12:42 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ void	symbol_description(t_list *node)
 	if ((next && ft_strcmp(sym->name, next->name) == 0
 			&& ft_strcmp(sym->type, next->type) == 0
 			&& ft_strcmp(sym->addr, next->addr) == 0)
-		|| ft_strcmp(sym->type, "u") == 0
-		|| ft_strcmp(sym->type, "p") == 0
+		|| ft_strcmp(sym->type, "u") == 0 || ft_strcmp(sym->type, "p") == 0
 		|| (((g_env->options & OPT_U) == OPT_U)
 			&& ft_strcmp(sym->type, "U") != 0)
 		|| (((g_env->options & OPT_U_MAJ) == OPT_U_MAJ)
