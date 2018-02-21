@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 16:54:31 by quentindequ       #+#    #+#             */
-/*   Updated: 2018/02/14 15:08:15 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/15 17:16:41 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	search_archives(void *ptr)
 	int				o_size;
 	char			*o_name;
 
-	if (DEBUG) ft_putendl("search_archives");
 	header = (struct ar_hdr *)(void*)(ptr + SARMAG);
 	while ((header = (struct ar_hdr *)((void*)header + sizeof(struct ar_hdr)
 			+ ft_atoi(header->ar_size))) && ((char *)header)[0] && ((char *)header)[0] == '#')

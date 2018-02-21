@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 11:05:36 by quentindequ       #+#    #+#             */
-/*   Updated: 2018/02/14 15:10:33 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/15 17:16:23 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,4 @@ void	match_header(void *ptr)
 		search_fat_64(ptr);
 	else if (ft_strncmp((char *)ptr, ARMAG, SARMAG) == 0)
 		search_archives(ptr);
-	else
-		return ;
 }

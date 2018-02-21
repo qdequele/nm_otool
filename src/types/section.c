@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 11:29:17 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/15 15:01:20 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/15 16:24:53 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,25 @@ void	show_sec_name(char *segname, char *sectname)
 	ft_putstr(",");
 	ft_putstr(sectname);
 	ft_putstr(") section\n");
+}
+
+void	show_sec_line(int sec_size, uint64_t addr, void *offset, int name_size)
+{
+	int		j;
+
+	j = 0;
+	while (j < sec_size)
+	{
+		if ((j % name_size) == 0)
+		{
+			if (j != 0)
+				ft_putstr("\n");
+			ft_putstr(ft_padding_right(ft_ultohex(addr + j), name_size, '0'));
+			ft_putstr("\t");
+		}
+		ft_putstr(ft_padding_right(ft_uitohex(((char *)offset)[j]), 2, '0'));
+		ft_putstr(" ");
+		j++;
+	}
+	ft_putstr("\n\n");
 }

@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 14:36:29 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/15 15:07:33 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/15 15:54:20 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct	s_section {
 
 t_list			*create_section(char *seg_name, char *sec_name, char *content);
 void			show_sec_name(char *segname, char *sectname);
-
+void			show_sec_line(int sec_size, uint64_t addr, void *offset, int name_size);
 /*
 **	GROUP
 */
