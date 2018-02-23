@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_otool.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:19:58 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/15 14:55:21 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/22 17:45:50 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_nm.h>
 
-int		main(int ac, char ** av)
+int main(int ac, char **av)
 {
-	int		i;
+	int i;
 
 	i = 0;
 	while (++i < ac)
@@ -26,8 +26,16 @@ int		main(int ac, char ** av)
 			perror("malloc g_env");
 			exit(EXIT_FAILURE);
 		}
-		ft_putstr(av[i]);
-		ft_putstr(":\n");
+		if (ft_match_str(av[i], ".a", ft_strlen(av[1]), 2) == 1)
+		{
+			ft_putstr("Archive : ");
+			ft_putendl(av[i]);
+		}
+		else
+		{
+			ft_putstr(av[i]);
+			ft_putendl(":");
+		}
 		read_file(av[i]);
 		match_header(g_env->ptr);
 	}
