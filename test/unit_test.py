@@ -59,7 +59,7 @@ def tests_nm(tests_array, args):
         else:
             result = "\033[92mOK\033[0m"
 
-        if args.errors or "OK" in result:
+        if args.errors and "OK" in result:
            continue
         print("\t+ {:{length}} {result}".format(t, length=max_len, result=result))
 
