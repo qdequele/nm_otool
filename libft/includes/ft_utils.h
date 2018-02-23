@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 11:19:53 by qdequele          #+#    #+#             */
-/*   Updated: 2018/01/25 11:13:44 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/23 10:40:36 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void			ft_console_log_num(int num);
 void			ft_console_log_line(const char *func, int line);
 void			ft_console_log_clear(void);
 int				ft_match(char *s1, char *s2);
+int				ft_match_str(char *s1, char *s2, unsigned int size_s1,
+					unsigned int size_s2);
 int				ft_nmatch(char *s1, char *s2);
 char			*ft_padding_left(char *before, int pad, char c);
 char			*ft_padding_right(char *before, int pad, char c);
