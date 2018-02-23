@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   section.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 11:29:17 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/15 16:24:53 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/22 17:55:35 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	show_sec_name(char *segname, char *sectname)
 	ft_putstr(") section\n");
 }
 
-void	show_sec_line(int sec_size, uint64_t addr, void *offset, int name_size)
+void	show_sec_line(int sec_size, uint64_t addr, void *offset, int name_size, int nb_bytes)
 {
 	int		j;
 
@@ -51,12 +51,12 @@ void	show_sec_line(int sec_size, uint64_t addr, void *offset, int name_size)
 		{
 			if (j != 0)
 				ft_putstr("\n");
-			ft_putstr(ft_padding_right(ft_ultohex(addr + j), name_size, '0'));
+			ft_putstr(ft_padding_right(ft_ultohex(addr + j), nb_bytes, '0'));
 			ft_putstr("\t");
 		}
 		ft_putstr(ft_padding_right(ft_uitohex(((char *)offset)[j]), 2, '0'));
 		ft_putstr(" ");
 		j++;
 	}
-	ft_putstr("\n\n");
+	ft_putstr("\n");
 }

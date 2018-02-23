@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_command.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 13:31:16 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/15 17:15:47 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/22 17:46:39 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,16 @@ void	search_lc_32(void *ptr)
 		create_group(NULL);
 	while (i < (int)header->ncmds)
 	{
-		if (g_env->otool == 1 && lc->cmd == LC_SEGMENT)
-			show_section_32(lc, ptr);
+		if (g_env->otool == 1)
+		{
+			if (lc->cmd == LC_SEGMENT)
+			{
+				if (g_env->current_group->name != NULL)
+					ft_putendl(g_env->current_group->name);
+				show_section_32(lc, ptr);
+			}
+		}
+
 		else if (lc->cmd == LC_SYMTAB)
 			search_nlist_32(lc, ptr);
 		else if (lc->cmd == LC_SEGMENT)
@@ -52,7 +60,11 @@ void	search_lc_64(void *ptr)
 		if (g_env->otool == 1)
 		{
 			if (lc->cmd == LC_SEGMENT_64)
+			{
+				if (g_env->current_group->name != NULL)
+					ft_putendl(g_env->current_group->name);
 				show_section_64(lc, ptr);
+			}
 		}
 		else if (lc->cmd == LC_SYMTAB)
 			search_nlist_64(lc, ptr);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   section_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 12:55:36 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/15 17:40:01 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/22 17:56:41 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	show_section_32(void *lc, void *ptr)
 		if (ft_strcmp(sec->sectname, SECT_TEXT) == 0)
 		{
 			show_sec_name(sec->segname, sec->sectname);
-			show_sec_line((int)sec->size, sec->addr, ptr + sec->offset, 16);
+			show_sec_line((int)sec->size, sec->addr, ptr + sec->offset, 16, 8);
 		}
 		sec = (struct section *)((void *)sec + sizeof(struct section));
 		i++;
@@ -47,7 +47,7 @@ void	show_section_64(void *lc, void *ptr)
 		if (ft_strcmp(sec->sectname, SECT_TEXT) == 0)
 		{
 			show_sec_name(sec->segname, sec->sectname);
-			show_sec_line((int)sec->size, sec->addr, ptr + sec->offset, 16);
+			show_sec_line((int)sec->size, sec->addr, ptr + sec->offset, 16, 16);
 		}
 		sec = (struct section_64 *)((void *)sec + sizeof(struct section_64));
 		i++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nm.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 14:36:29 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/15 15:54:20 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/22 17:56:05 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ typedef struct	s_section {
 
 t_list			*create_section(char *seg_name, char *sec_name, char *content);
 void			show_sec_name(char *segname, char *sectname);
-void			show_sec_line(int sec_size, uint64_t addr, void *offset, int name_size);
+void			show_sec_line(int sec_size, uint64_t addr, void *offset, int name_size, int nb_bytes);
+
 /*
 **	GROUP
 */
