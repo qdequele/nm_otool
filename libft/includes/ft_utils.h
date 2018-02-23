@@ -6,7 +6,7 @@
 /*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 11:19:53 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/23 10:40:36 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/23 11:03:01 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct	s_gnl
 }				t_gnl;
 
 int				ft_atoi(const char *str);
-void			ft_bzero(void *s, size_t n);
+void			ft_bzero(void *s, unsigned int n);
 t_color			*ft_create_color_rgb(int r, int g, int b);
 t_color			*ft_create_color_hex(int hex_color);
 int				ft_get_next_line(int const fd, char **line);

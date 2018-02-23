@@ -6,7 +6,7 @@
 /*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 11:29:17 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/22 17:55:35 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/23 11:38:53 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,8 @@ void	show_sec_line(int sec_size, uint64_t addr, void *offset, int name_size, int
 		ft_putstr(" ");
 		j++;
 	}
-	ft_putstr("\n");
+	if (sec_size > 0)
+	{
+		ft_putstr("\n");
+	}
 }
