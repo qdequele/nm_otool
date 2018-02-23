@@ -6,7 +6,7 @@
 /*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 12:55:36 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/22 17:56:41 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/23 15:02:31 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	show_section_32(void *lc, void *ptr)
 	int						i;
 
 	seg = (struct segment_command *)lc;
+	check_integrity(seg->fileoff + seg->filesize);
 	sec = (struct section *)((void *)seg + sizeof(struct segment_command));
 	i = 0;
 	while (i < (int)seg->nsects)
@@ -40,6 +41,7 @@ void	show_section_64(void *lc, void *ptr)
 	int							i;
 
 	seg = (struct segment_command_64 *)lc;
+	check_integrity(seg->fileoff + seg->filesize);
 	sec = (struct section_64 *)((void *)seg + sizeof(struct segment_command_64));
 	i = 0;
 	while (i < (int)seg->nsects)
@@ -61,6 +63,7 @@ void	search_section_32(void *lc)
 	int						i;
 
 	seg = (struct segment_command *)lc;
+	check_integrity(seg->fileoff + seg->filesize);
 	sec = (struct section *)((void *)seg + sizeof(struct segment_command));
 	i = 0;
 	while (i < (int)seg->nsects)
@@ -79,6 +82,7 @@ void	search_section_64(void *lc)
 	int							i;
 
 	seg = (struct segment_command_64 *)lc;
+	check_integrity(seg->fileoff + seg->filesize);
 	sec = (struct section_64 *)((void *)seg + sizeof(struct segment_command_64));
 	i = 0;
 	while (i < (int)seg->nsects)

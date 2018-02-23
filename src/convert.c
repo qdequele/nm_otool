@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   convert.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 13:31:08 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/08 14:15:35 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/23 14:47:26 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_nm.h>
 
-int	convert_endian_32(u_int32_t nb)
+int		convert_endian_32(u_int32_t nb)
 {
 	return (
 		(nb & 0x000000FF) << 24 |
@@ -22,7 +22,7 @@ int	convert_endian_32(u_int32_t nb)
 	);
 }
 
-int	convert_endian_64(u_int64_t nb)
+int		convert_endian_64(u_int64_t nb)
 {
 	return (
 		(nb & 0x00000000000000FF) << 56 |

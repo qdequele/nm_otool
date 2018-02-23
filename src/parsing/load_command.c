@@ -6,7 +6,7 @@
 /*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 13:31:16 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/22 17:46:39 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/23 14:48:16 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	search_lc_32(void *ptr)
 
 	header = (struct mach_header *)ptr;
 	lc = ptr + sizeof(struct mach_header);
+	check_integrity(header->sizeofcmds);
 	i = 0;
 	if (!g_env->current_group)
 		create_group(NULL);
@@ -52,6 +53,7 @@ void	search_lc_64(void *ptr)
 
 	header = (struct mach_header_64 *)ptr;
 	lc = ptr + sizeof(struct mach_header_64);
+	check_integrity(header->sizeofcmds);
 	i = 0;
 	if (!g_env->current_group)
 		create_group(NULL);

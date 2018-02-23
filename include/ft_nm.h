@@ -6,7 +6,7 @@
 /*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 14:36:29 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/22 17:56:05 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/23 14:47:40 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct	s_env {
 	int			options;
 	int			otool;
 	void		*ptr;
+	int			filesize;
 	char		*filename;
 	int			nb_fat;
 	t_group		*current_group;
@@ -98,6 +99,7 @@ void			create_env();
 void			env_description(char *name);
 int				parse_options_nm(char **entry);
 void			read_file(char *filename);
+void			check_integrity(int ptr);
 
 /*
 **	HEADER

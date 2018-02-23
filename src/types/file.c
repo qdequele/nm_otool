@@ -6,7 +6,7 @@
 /*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 11:50:53 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/09 15:31:49 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/23 15:03:44 by quentindequ      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	read_file(char *filename)
 		perror("fstat");
 		exit(EXIT_FAILURE);
 	}
+	g_env->filesize = buff.st_size;
 	if ((ptr = mmap(0, buff.st_size, PROT_READ, MAP_PRIVATE, fd, 0)) == MAP_FAILED)
 	{
 		perror("mmap");
@@ -35,4 +36,13 @@ void	read_file(char *filename)
 	}
 	g_env->filename = filename;
 	g_env->ptr = ptr;
+}
+
+void	check_integrity(int ptr)
+{
+	if (ptr > g_env->filesize)
+	{
+		perror("Corupted file");
+		exit(EXIT_FAILURE);
+	}
 }
