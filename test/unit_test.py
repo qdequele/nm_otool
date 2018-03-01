@@ -7,7 +7,7 @@ import textwrap
 
 
 # absolute path to your nm_otool project
-PROJECT_PATH = '/Users/quentindequelen/Projects/42/nm_otool'
+PROJECT_PATH = '/Users/qdequele/Projects/nm_otool'
 
 NM_PATH = os.path.join(PROJECT_PATH, 'ft_nm')
 OTOOL_PATH = os.path.join(PROJECT_PATH, 'ft_otool')
@@ -59,7 +59,7 @@ def tests_nm(tests_array, args):
         else:
             result = "\033[92mOK\033[0m"
 
-        if args.errors and "OK" in result:
+        if args.errors or "OK" in result:
            continue
         print("\t+ {:{length}} {result}".format(t, length=max_len, result=result))
 
@@ -94,7 +94,7 @@ def tests_otool(tests_array):
         else:
             result = "\033[92mOK\033[0m"
 
-        if args.errors and "OK" in result:
+        if args.errors or "OK" in result:
            continue
         print("\t+ {:{length}} {result}".format(t, length=max_len, result=result))
 
