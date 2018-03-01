@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   load_command.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 13:31:16 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/23 14:48:16 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/03/01 09:29:09 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_nm.h>
+
+void	search_lc_32_otool(void *ptr, struct load_command *lc)
+{
+	if (lc->cmd == LC_SEGMENT_64)
+	{
+		if (g_env->current_group->name != NULL)
+			ft_putendl(g_env->current_group->name);
+		show_section_32(lc, ptr);
+	}
+}
 
 void	search_lc_32(void *ptr)
 {
@@ -27,21 +37,23 @@ void	search_lc_32(void *ptr)
 	while (i < (int)header->ncmds)
 	{
 		if (g_env->otool == 1)
-		{
-			if (lc->cmd == LC_SEGMENT)
-			{
-				if (g_env->current_group->name != NULL)
-					ft_putendl(g_env->current_group->name);
-				show_section_32(lc, ptr);
-			}
-		}
-
+			search_lc_32_otool(ptr, lc);
 		else if (lc->cmd == LC_SYMTAB)
 			search_nlist_32(lc, ptr);
 		else if (lc->cmd == LC_SEGMENT)
 			search_section_32(lc);
 		lc = (void*)lc + lc->cmdsize;
 		i++;
+	}
+}
+
+void	search_lc_64_otool(void *ptr, struct load_command *lc)
+{
+	if (lc->cmd == LC_SEGMENT_64)
+	{
+		if (g_env->current_group->name != NULL)
+			ft_putendl(g_env->current_group->name);
+		show_section_64(lc, ptr);
 	}
 }
 
@@ -60,14 +72,7 @@ void	search_lc_64(void *ptr)
 	while (i < (int)header->ncmds)
 	{
 		if (g_env->otool == 1)
-		{
-			if (lc->cmd == LC_SEGMENT_64)
-			{
-				if (g_env->current_group->name != NULL)
-					ft_putendl(g_env->current_group->name);
-				show_section_64(lc, ptr);
-			}
-		}
+			search_lc_64_otool(ptr, lc);
 		else if (lc->cmd == LC_SYMTAB)
 			search_nlist_64(lc, ptr);
 		else if (lc->cmd == LC_SEGMENT_64)
