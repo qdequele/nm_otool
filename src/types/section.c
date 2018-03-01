@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   section.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 11:29:17 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/23 11:38:53 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/03/01 09:35:45 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_list	*create_section(char *seg_name, char *sec_name, char *content)
 	return (lst);
 }
 
-
 void	show_sec_name(char *segname, char *sectname)
 {
 	ft_putstr("Contents of (");
@@ -40,18 +39,42 @@ void	show_sec_name(char *segname, char *sectname)
 	ft_putstr(") section\n");
 }
 
-void	show_sec_line(int sec_size, uint64_t addr, void *offset, int name_size, int nb_bytes)
+void	show_sec_line_32(int sec_size, uint64_t addr, void *offset)
 {
 	int		j;
 
 	j = 0;
 	while (j < sec_size)
 	{
-		if ((j % name_size) == 0)
+		if ((j % 16) == 0)
 		{
 			if (j != 0)
 				ft_putstr("\n");
-			ft_putstr(ft_padding_right(ft_ultohex(addr + j), nb_bytes, '0'));
+			ft_putstr(ft_padding_right(ft_ultohex(addr + j), 8, '0'));
+			ft_putstr("\t");
+		}
+		ft_putstr(ft_padding_right(ft_uitohex(((char *)offset)[j]), 2, '0'));
+		ft_putstr(" ");
+		j++;
+	}
+	if (sec_size > 0)
+	{
+		ft_putstr("\n");
+	}
+}
+
+void	show_sec_line_64(int sec_size, uint64_t addr, void *offset)
+{
+	int		j;
+
+	j = 0;
+	while (j < sec_size)
+	{
+		if ((j % 16) == 0)
+		{
+			if (j != 0)
+				ft_putstr("\n");
+			ft_putstr(ft_padding_right(ft_ultohex(addr + j), 16, '0'));
 			ft_putstr("\t");
 		}
 		ft_putstr(ft_padding_right(ft_uitohex(((char *)offset)[j]), 2, '0'));

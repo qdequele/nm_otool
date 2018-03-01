@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   section_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 12:55:36 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/23 15:02:31 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/03/01 09:36:19 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	show_section_32(void *lc, void *ptr)
 	int						i;
 
 	seg = (struct segment_command *)lc;
-	check_integrity(seg->fileoff + seg->filesize);
 	sec = (struct section *)((void *)seg + sizeof(struct segment_command));
 	i = 0;
 	while (i < (int)seg->nsects)
@@ -27,7 +26,7 @@ void	show_section_32(void *lc, void *ptr)
 		if (ft_strcmp(sec->sectname, SECT_TEXT) == 0)
 		{
 			show_sec_name(sec->segname, sec->sectname);
-			show_sec_line((int)sec->size, sec->addr, ptr + sec->offset, 16, 8);
+			show_sec_line_32((int)sec->size, sec->addr, ptr + sec->offset);
 		}
 		sec = (struct section *)((void *)sec + sizeof(struct section));
 		i++;
@@ -41,15 +40,15 @@ void	show_section_64(void *lc, void *ptr)
 	int							i;
 
 	seg = (struct segment_command_64 *)lc;
-	check_integrity(seg->fileoff + seg->filesize);
-	sec = (struct section_64 *)((void *)seg + sizeof(struct segment_command_64));
+	sec = (struct section_64 *)((void *)seg
+		+ sizeof(struct segment_command_64));
 	i = 0;
 	while (i < (int)seg->nsects)
 	{
 		if (ft_strcmp(sec->sectname, SECT_TEXT) == 0)
 		{
 			show_sec_name(sec->segname, sec->sectname);
-			show_sec_line((int)sec->size, sec->addr, ptr + sec->offset, 16, 16);
+			show_sec_line_64((int)sec->size, sec->addr, ptr + sec->offset);
 		}
 		sec = (struct section_64 *)((void *)sec + sizeof(struct section_64));
 		i++;
@@ -83,7 +82,8 @@ void	search_section_64(void *lc)
 
 	seg = (struct segment_command_64 *)lc;
 	check_integrity(seg->fileoff + seg->filesize);
-	sec = (struct section_64 *)((void *)seg + sizeof(struct segment_command_64));
+	sec = (struct section_64 *)((void *)seg
+		+ sizeof(struct segment_command_64));
 	i = 0;
 	while (i < (int)seg->nsects)
 	{
