@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 13:31:16 by qdequele          #+#    #+#             */
-/*   Updated: 2018/03/01 09:29:09 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/03/01 09:40:14 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	search_lc_32_otool(void *ptr, struct load_command *lc)
 {
-	if (lc->cmd == LC_SEGMENT_64)
+	if (lc->cmd == LC_SEGMENT)
 	{
 		if (g_env->current_group->name != NULL)
 			ft_putendl(g_env->current_group->name);
