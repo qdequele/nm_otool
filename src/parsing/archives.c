@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   archives.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 16:54:31 by quentindequ       #+#    #+#             */
-/*   Updated: 2018/02/23 11:08:23 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/28 20:29:29 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,10 @@ void	search_archives(void *ptr)
 			+ ft_atoi(header->ar_size)))
 			&& ((char *)header)[0] && ((char *)header)[0] == '#')
 	{
-		if (DEBUG) ft_putendl((char*)header);
 		o_size = ft_atoi(ft_strsub(header->ar_name, 3, 5));
 		o_name = ft_strsub((char *)((void *)header + sizeof(struct ar_hdr)),
 			0, o_size);
-		create_group(ft_strjoin(g_env->filename, ft_strjoin("(",ft_strjoin(
+		create_group(ft_strjoin(g_env->filename, ft_strjoin("(", ft_strjoin(
 			o_name, "):"))));
 		match_header((void *)header + sizeof(struct ar_hdr) + o_size);
 	}
