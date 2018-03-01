@@ -3,24 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_otool.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:19:58 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/22 17:45:50 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/28 20:53:02 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_nm.h>
 
-int main(int ac, char **av)
+int		main(int ac, char **av)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (++i < ac)
 	{
-		create_env();
-		g_env->otool = 1;
+		create_env_otool();
 		if (g_env == NULL)
 		{
 			perror("malloc g_env");

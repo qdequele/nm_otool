@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 11:35:21 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/14 15:12:42 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/28 20:58:49 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ void	symbol_description(t_list *node)
 			&& ft_strcmp(sym->type, "U") != 0)
 		|| (((g_env->options & OPT_U_MAJ) == OPT_U_MAJ)
 			&& ft_strcmp(sym->type, "U") == 0))
-		return;
-
+		return ;
 	if ((g_env->options & OPT_J) != OPT_J)
 	{
 		ft_putstr(sym->addr);

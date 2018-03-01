@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 10:51:36 by quentindequ       #+#    #+#             */
-/*   Updated: 2018/02/15 14:48:28 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/28 20:57:54 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static char	*symbol_type_sect(uint8_t sect)
 	t_section	*sec;
 	char		*ret;
 
-	sec = (t_section *)(ft_lstget_at(g_env->current_group->sec_list, (int)sect - 1)->content);
+	sec = (t_section *)(ft_lstget_at(g_env->current_group->sec_list,
+		(int)sect - 1)->content);
 	if (ft_strcmp(sec->sec_name, SECT_TEXT) == 0)
 		ret = ft_strdup("T");
 	else if (ft_strcmp(sec->sec_name, SECT_DATA) == 0)
@@ -49,4 +50,3 @@ char		*symbol_type(uint8_t type, uint8_t sect)
 		ret[0] += 32;
 	return (ret);
 }
-

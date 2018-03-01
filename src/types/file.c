@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 11:50:53 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/23 15:03:44 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/28 20:47:20 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	read_file(char *filename)
 		exit(EXIT_FAILURE);
 	}
 	g_env->filesize = buff.st_size;
-	if ((ptr = mmap(0, buff.st_size, PROT_READ, MAP_PRIVATE, fd, 0)) == MAP_FAILED)
+	if ((ptr = mmap(0, buff.st_size, PROT_READ, MAP_PRIVATE, fd, 0))
+		== MAP_FAILED)
 	{
 		perror("mmap");
 		exit(EXIT_FAILURE);

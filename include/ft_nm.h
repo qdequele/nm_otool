@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nm.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 14:36:29 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/23 14:47:40 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/28 20:52:50 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@
 
 # define DEBUG 0
 
-# define OPT_N 0b00000001 // -n : Sort numerically rather than alphabetically.
-# define OPT_O 0b00000010 // -o : Prepend file or archive element name to each output line, rather than only once.
-# define OPT_P 0b00000100 // -p : don't sort
-# define OPT_R 0b00001000 // -r : sort in reverse
-# define OPT_U 0b00010000 // -u : show only undefined symbols
-# define OPT_U_MAJ 0b00100000 // -U : don't show undefined symbols
-# define OPT_J 0b01000000 // -j : Just display the symbol names (no value or type).
+# define OPT_N 0b00000001
+# define OPT_O 0b00000010
+# define OPT_P 0b00000100
+# define OPT_R 0b00001000
+# define OPT_U 0b00010000
+# define OPT_U_MAJ 0b00100000
+# define OPT_J 0b01000000
 
 /*
 **	SYMBOLES
@@ -63,7 +63,8 @@ typedef struct	s_section {
 
 t_list			*create_section(char *seg_name, char *sec_name, char *content);
 void			show_sec_name(char *segname, char *sectname);
-void			show_sec_line(int sec_size, uint64_t addr, void *offset, int name_size, int nb_bytes);
+void			show_sec_line_32(int sec_size, uint64_t addr, void *offset);
+void			show_sec_line_64(int sec_size, uint64_t addr, void *offset);
 
 /*
 **	GROUP
@@ -96,6 +97,7 @@ typedef struct	s_env {
 t_env			*g_env;
 
 void			create_env();
+void			create_env_otool(void);
 void			env_description(char *name);
 int				parse_options_nm(char **entry);
 void			read_file(char *filename);

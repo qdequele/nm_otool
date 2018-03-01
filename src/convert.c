@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 13:31:08 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/23 14:47:26 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/02/28 20:51:04 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ int		convert_endian_32(u_int32_t nb)
 		(nb & 0x000000FF) << 24 |
 		(nb & 0x0000FF00) << 8 |
 		(nb & 0x00FF0000) >> 8 |
-		(nb & 0xFF000000) >> 24
-	);
+		(nb & 0xFF000000) >> 24);
 }
 
 int		convert_endian_64(u_int64_t nb)
@@ -32,6 +31,5 @@ int		convert_endian_64(u_int64_t nb)
 		(nb & 0x000000FF00000000) >> 8 |
 		(nb & 0x0000FF0000000000) >> 24 |
 		(nb & 0x00FF000000000000) >> 40 |
-		(nb & 0xFF00000000000000) >> 56
-	);
+		(nb & 0xFF00000000000000) >> 56);
 }

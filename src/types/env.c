@@ -6,13 +6,13 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 13:07:52 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/14 15:34:33 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/28 20:52:27 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_nm.h>
 
-void		create_env()
+void		create_env(void)
 {
 	t_env	*env;
 
@@ -24,11 +24,17 @@ void		create_env()
 	env->options = 0;
 	env->otool = 0;
 	env->nb_fat = 0;
-	env->ptr= NULL;
+	env->ptr = NULL;
 	env->filename = NULL;
 	env->current_group = NULL;
 	env->group_list = NULL;
 	g_env = env;
+}
+
+void		create_env_otool(void)
+{
+	create_env();
+	g_env->otool = 1;
 }
 
 int			parse_options_nm(char **entry)
@@ -62,8 +68,7 @@ int			parse_options_nm(char **entry)
 void		env_description(char *name)
 {
 	if (g_env->group_list == NULL)
-		return;
-
+		return ;
 	if (g_env->nb_fat == 1)
 	{
 		ft_putstr(g_env->filename);

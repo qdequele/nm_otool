@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   fat.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentindequelen <quentindequelen@studen    +#+  +:+       +#+        */
+/*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 11:24:30 by qdequele          #+#    #+#             */
-/*   Updated: 2018/02/23 14:49:59 by quentindequ      ###   ########.fr       */
+/*   Updated: 2018/03/01 09:25:41 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_nm.h>
 
-void search_fat_32(void *ptr)
+void		search_fat_32(void *ptr)
 {
-	int i;
-	struct fat_header *header;
-	struct fat_arch *arch;
-	int offset;
+	int					i;
+	struct fat_header	*header;
+	struct fat_arch		*arch;
+	int					offset;
 
 	header = (struct fat_header *)ptr;
 	i = 0;
@@ -28,11 +28,10 @@ void search_fat_32(void *ptr)
 	g_env->nb_fat = convert_endian_32(header->nfat_arch);
 	while (i < convert_endian_32(header->nfat_arch))
 	{
-		check_integrity(arch->offset + arch->offset);
 		if (convert_endian_32(arch->cputype) == CPU_TYPE_X86_64)
 		{
 			offset = convert_endian_32(arch->offset);
-			break;
+			break ;
 		}
 		arch = (void *)arch + sizeof(struct fat_arch);
 		i++;
@@ -40,12 +39,12 @@ void search_fat_32(void *ptr)
 	match_header((void *)header + offset);
 }
 
-void search_fat_64(void *ptr)
+void		search_fat_64(void *ptr)
 {
-	int i;
-	struct fat_header *header;
-	struct fat_arch_64 *arch;
-	int offset;
+	int					i;
+	struct fat_header	*header;
+	struct fat_arch_64	*arch;
+	int					offset;
 
 	header = (struct fat_header *)ptr;
 	i = 0;
@@ -56,11 +55,10 @@ void search_fat_64(void *ptr)
 	g_env->nb_fat = convert_endian_64(header->nfat_arch);
 	while (i < convert_endian_64(header->nfat_arch))
 	{
-		check_integrity(arch->offset + arch->offset);
 		if (convert_endian_64(arch->cputype) == CPU_TYPE_X86_64)
 		{
 			offset = convert_endian_64(arch->offset);
-			break;
+			break ;
 		}
 		arch = (void *)arch + sizeof(struct fat_arch_64);
 		i++;
