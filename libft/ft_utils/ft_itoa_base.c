@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 10:02:34 by qdequele          #+#    #+#             */
-/*   Updated: 2018/01/25 10:49:33 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/28 20:57:00 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ char	*ft_itoa_base(int nb, int base)
 	}
 	return (str);
 }
-
 
 char	*ft_uitoa_base(unsigned int nb, int base)
 {
@@ -93,7 +92,7 @@ char	*ft_uitohex(unsigned int nb)
 	size_t			len;
 
 	len = ft_uilen_base(nb, 16);
-	if ((str = (char *)malloc(sizeof(char) * (len + 1))) ==  NULL)
+	if ((str = (char *)malloc(sizeof(char) * (len + 1))) == NULL)
 		return (NULL);
 	str[len] = '\0';
 	while (len-- > 0)
@@ -110,7 +109,7 @@ char	*ft_ultohex(unsigned long nb)
 	size_t			len;
 
 	len = ft_ullen_base(nb, 16);
-	if ((str = (char *)malloc(sizeof(char) * (len + 1))) ==  NULL)
+	if ((str = (char *)malloc(sizeof(char) * (len + 1))) == NULL)
 		return (NULL);
 	str[len] = '\0';
 	while (len-- > 0)

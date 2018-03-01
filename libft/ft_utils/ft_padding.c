@@ -6,7 +6,7 @@
 /*   By: qdequele <qdequele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 10:47:09 by qdequele          #+#    #+#             */
-/*   Updated: 2018/01/25 11:16:58 by qdequele         ###   ########.fr       */
+/*   Updated: 2018/02/28 20:56:13 by qdequele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ char	*ft_padding_left(char *before, int pad, char c)
 	int		i;
 
 	b_len = ft_strlen(before);
-	if ((after = (char *)malloc(sizeof(char)* (pad + 1))) == NULL)
-		return NULL;
+	if ((after = (char *)malloc(sizeof(char) * (pad + 1))) == NULL)
+		return (NULL);
 	after[pad] = '\0';
 	i = 0;
 	while (i < b_len && i < pad)
@@ -42,8 +42,8 @@ char	*ft_padding_right(char *before, int pad, char c)
 	int		b_len;
 
 	b_len = ft_strlen(before);
-	if ((after = (char *)malloc(sizeof(char)* (pad + 1))) == NULL)
-		return NULL;
+	if ((after = (char *)malloc(sizeof(char) * (pad + 1))) == NULL)
+		return (NULL);
 	after[pad] = '\0';
 	while (b_len > 0 && pad > 0)
 	{
